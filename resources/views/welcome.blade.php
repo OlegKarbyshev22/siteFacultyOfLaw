@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="libary_slider/owl.carousel.min.css">
-    <link rel="stylesheet" href="libary_slider/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ url('css/style.css') }}">
+    <link rel="stylesheet" href="{{ url('css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url('css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url('libary_slider/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url('libary_slider/owl.theme.default.min.css') }}">
     <title>Юридический факультет</title>
 </head>
 <body>
@@ -20,19 +20,19 @@
             <div class="header__nav">
                 <nav>
                     <ul>
-                        <li><a class="header__link" href="#">Юридическое образование Ульяновской области в контексте времени</a></li>
-                        <li><a class="header__link" href="">Вызовы нового времени</a></li>
+                        <li><a class="header__link" href="#law" onclick="">Юридическое образование Ульяновской области в контексте времени</a></li>
+                        <li><a class="header__link" href="#challengesNewAge">Вызовы нового времени</a></li>
                         <li><a class="header__link" href="">Книга памяти</a></li>
-                        <li><a class="header__link" href="">Галерея славных имён</a></li>
-                        <li><a class="header__link" href="">Участники СВО</a></li>
-                        <li><a class="header__link" href="">Предложить новость +</a></li>
+                        <li><a class="header__link" href="#gallery_glorious_names">Галерея славных имён</a></li>
+                        <li><a class="header__link" href="#gallery_SVO">Участники СВО</a></li>
+                        <li><a class="header__link" href="#insert_news">Предложить новость +</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
 </header>
-<section class="law">
+<section id="law">
     <div class="container">
         <h2>Юридическое образование Ульяновской области в контексте времени</h2>
         <div class="law_wrapper">
@@ -98,7 +98,7 @@
         </div>
     </div>
 </section>
-<section class="gallery_glorious_names">
+<section id="gallery_glorious_names">
     <div class="container">
         <h2>Галерея славных имен</h2>
         <div class="wrapper">
@@ -137,7 +137,7 @@
         </div>
     </div>
 </section>
-<section class="gallery_SVO">
+<section id="gallery_SVO">
     <div class="container">
         <h2>Участники СВО</h2>
         <div class="wrapper">
@@ -176,7 +176,7 @@
         </div>
     </div>
 </section>
-<section class="insert_news">
+<section id="insert_news">
     <div class="container">
         <h2>Отправить новость</h2>
         <div class="wrapper">
@@ -195,7 +195,7 @@
         </div>
     </div>
 </section>
-<section class="news">
+<section id="news">
     <div class="container">
         <h1>Новости</h1>
         <div class="news-card">
@@ -217,7 +217,7 @@
         </div>
     </div>
 </section>
-<section class="challengesNewAge">
+<section id="challengesNewAge">
     <div class="container">
 
         <h2 class="title">Вызовы нового времени</h2>
@@ -329,8 +329,8 @@
         </div>
     </div>
 </footer>
-<script src="/libary_slider/jquery.min.js"></script>
-<script src="/libary_slider/owl.carousel.min.js"></script>
-<script src="/scripts.js"></script>
+<script src="{{ url('libary_slider/jquery.min.js') }}" defer></script>
+<script src="{{ url('libary_slider/owl.carousel.min.js') }}" defer></script>
+<script src="{{ url('js/scripts.js') }}" defer></script>
 </body>
 </html>
