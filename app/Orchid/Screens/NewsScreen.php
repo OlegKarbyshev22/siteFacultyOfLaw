@@ -2,7 +2,16 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\News;
+use Orchid\Support\Facades\Layout;
+
 use Orchid\Screen\Screen;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\Switcher;
+use Orchid\Screen\TD;
 
 class NewsScreen extends Screen
 {
@@ -11,9 +20,13 @@ class NewsScreen extends Screen
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(): array
     {
-        return [];
+
+
+        return [
+            'author'  => News::find(),
+        ];
     }
 
     /**
@@ -43,6 +56,11 @@ class NewsScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::table('news', [
+                TD::make('author', 'author')->width('100'),
+                TD::make('email', 'email')->width('100'),
+            ])
+        ];
     }
 }
