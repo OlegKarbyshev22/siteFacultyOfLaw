@@ -3,8 +3,13 @@
 namespace App\Orchid\Screens;
 
 use App\Models\News;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Support\Facades\Layout;
-
+use Orchid\Screen\Actions\Link;
+use Illuminate\Http\Request;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
@@ -12,7 +17,8 @@ use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\TD;
-
+use function Termwind\render;
+use Orchid\Support\Facades\Alert;
 class NewsScreen extends Screen
 {
     /**
@@ -22,10 +28,8 @@ class NewsScreen extends Screen
      */
     public function query(): array
     {
-
-
         return [
-            'author'  => News::find(),
+            'news' => News::all()
         ];
     }
 
@@ -46,7 +50,9 @@ class NewsScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make('Добавить новость')->route('platform.create.news'),
+        ];
     }
 
     /**
@@ -58,9 +64,24 @@ class NewsScreen extends Screen
     {
         return [
             Layout::table('news', [
-                TD::make('author', 'author')->width('100'),
-                TD::make('email', 'email')->width('100'),
-            ])
+                TD::make('path_image', 'Фото')->render(function (News $news) {
+                    $imagePath = asset('storage/images/' . $news->path_image);
+                    return "<img src='{$imagePath}' alt='sample' class='w-50'>";
+                }),
+
+
+                TD::make('author', 'Автор'),
+                TD::make('email', 'Email'),
+                TD::make('phone', 'Телефон'),
+                TD::make('description', 'Описание новости')->width(300),
+                TD::make('status', 'Статус')
+            ]),
+
         ];
     }
+
+
+
 }
+
+

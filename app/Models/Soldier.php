@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
-class News extends Model
+
+class Soldier extends Model
 {
     use HasFactory;
     use AsSource;
 
 
-
-    protected $fillable = ['title', 'author', 'email', 'phone', 'path_image', 'description', 'status'];
+    protected $fillable = ['first_name', 'last_name', 'patronymic', 'description', 'path_image'];
 }
-
-

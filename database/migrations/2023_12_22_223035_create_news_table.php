@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string("author", 60);
-            $table->string("email", 120);
-            $table->string("phone", 20);
+            $table->string("author", 60)->nullable();
+            $table->string("email", 120)->nullable();
+            $table->string("phone", 20)->nullable();
+            $table->string("title", 256);
             $table->longText("description");
             $table->string("path_image");
             $table->enum('status', ['rejected', 'consideration', 'approved']);

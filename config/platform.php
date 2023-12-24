@@ -127,7 +127,10 @@ return [
 
     'resource' => [
         'stylesheets' => [],
-        'scripts'     => [],
+        'scripts'     => [
+            "https://unpkg.com/quill-image-compress@1.2.11/dist/quill.imageCompressor.min.js",
+            "/js/admin/quill.imagecropper.js",
+        ],
     ],
 
     /*

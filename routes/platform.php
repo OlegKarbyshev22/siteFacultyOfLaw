@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\CreateNewsScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -11,6 +12,8 @@ use App\Orchid\Screens\Examples\ExampleGridScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use App\Orchid\Screens\HeroesEditScreen;
+use App\Orchid\Screens\HeroesScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
@@ -102,5 +105,11 @@ Route::screen('/examples/grid', ExampleGridScreen::class)->name('platform.exampl
 Route::screen('/examples/charts', ExampleChartsScreen::class)->name('platform.example.charts');
 Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
 
-Route::screen('news', NewsScreen::class)->name('platform.news');
+Route::screen('/news', NewsScreen::class)->name('platform.news');
+Route::screen('/news/create', CreateNewsScreen::class)->name('platform.create.news');
+
+Route::screen('/heroes_SVO/{soldier}', HeroesEditScreen::class)
+    ->name('platform.heroes.edit');
+Route::screen('/heroes_SVO', HeroesScreen::class )->name('platform.heroes');
+
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
