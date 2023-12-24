@@ -95,7 +95,7 @@
     justify-content: center;
 }
 
-.law h2 {
+#law h2 {
     text-align: center;
     color: #030394;
     font-family: 'Montserrat', sans-serif;
@@ -124,24 +124,24 @@
 
 
 
-.faces_of_victory p {
+#faces_of_victory p {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
 
-.management p {
+#managemen p {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
 
 
-.gallery_glorious_names h2{
+#gallery_glorious_names h2{
     text-align: center;
     color: #030394;
     font-family: 'Montserrat', sans-serif;
 }
 
-.gallery_glorious_names .wrapper {
+#gallery_glorious_names .wrapper {
     display: flex;
     flex-direction: row;
     align-items: start;
@@ -149,13 +149,13 @@
     flex-wrap: wrap;
 }
 
-.gallery_glorious_names img {
+#gallery_glorious_names img {
     width: 230px;
     height: 280px;
     padding: 10px;
 }
 
-.gallery_glorious_names p {
+#gallery_glorious_names p {
     padding: 0px;
     margin: 0px;
     font-family: 'Montserrat', sans-serif;
@@ -163,19 +163,19 @@
     padding-left: 10px;
 }
 
-.gallery_glorious_names a {
+#gallery_glorious_names a {
     color: #030394;
 }
 
 
 
-.gallery_SVO h2{
+#gallery_SVO h2{
     text-align: center;
     color: #428539;
     font-family: 'Montserrat', sans-serif;
 }
 
-.gallery_SVO .wrapper {
+#gallery_SVO .wrapper {
     display: flex;
     flex-direction: row;
     align-items: start;
@@ -183,13 +183,13 @@
     flex-wrap: wrap;
 }
 
-.gallery_SVO img {
-    width: 250px;
+#gallery_SVO img {
+    width: 230px;
     height: 280px;
     padding: 10px;
 }
 
-.gallery_SVO p {
+#gallery_SVO p {
     padding: 0px;
     margin: 0px;
     font-family: 'Montserrat', sans-serif;
@@ -197,41 +197,41 @@
     padding-left: 10px;
 }
 
-.gallery_SVO a {
+#gallery_SVO a {
     color: #030394;
 }
 
-.insert_news {
+#insert_news {
     font-family: 'Montserrat', sans-serif;
     padding-bottom: 20px;
     max-width: 800px; /* Set a maximum width for better readability on larger screens */
     margin: 0 auto; /* Center the form on the page */
 }
 
-.insert_news h2 {
+#insert_news h2 {
     color: #030394;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
 
-.insert_news input,
-.insert_news textarea,
-.insert_news select {
+#insert_news input,
+#insert_news textarea,
+#insert_news select {
     width: 60%; /* Make inputs and textarea take full width */
     padding: 10px;
     box-sizing: border-box; /* Include padding in the width */
     margin-bottom: 10px;
 }
 
-.insert_news input[type="submit"] {
+#insert_news input[type="submit"] {
     width: auto; /* Reset width for submit button */
 }
 
 /* Media query for smaller screens */
 @media screen and (max-width: 600px) {
-    .insert_news input,
-    .insert_news textarea,
-    .insert_news select {
+    #insert_news input,
+    #insert_news textarea,
+    #insert_news select {
         width: 100%;
     }
 }
@@ -276,12 +276,12 @@
 
 
 /* news */
-.news {
+#news {
     font-family: 'Montserrat', sans-serif;
     display: flex;
 }
 
-.news h1 {
+#news h1 {
     text-align: center;
     color: #0466c8;
 }
@@ -333,11 +333,11 @@
     }
 }
 
-.challengesNewAge {
+#challengesNewAge {
     background-color: #e3f2fd;
 }
 
-.challengesNewAge .title
+#challengesNewAge .title
 {
     margin: 0px;
     padding-top: 20px;
