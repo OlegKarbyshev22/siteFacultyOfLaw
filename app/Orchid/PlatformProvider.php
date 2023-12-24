@@ -39,7 +39,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.news'),
             Menu::make('Герои СВО')
                 ->icon('envelope-letter')
-                ->route('platform.heroes')
+                ->route('platform.heroes'),
+            Menu::make('Славные имена')
+                ->icon('envelope-letter')
+                ->route('platform.glorious_names')
 
         ];
     }

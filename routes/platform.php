@@ -12,6 +12,8 @@ use App\Orchid\Screens\Examples\ExampleGridScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use App\Orchid\Screens\GloriousNamesEditScreen;
+use App\Orchid\Screens\GloriousNamesScreen;
 use App\Orchid\Screens\HeroesEditScreen;
 use App\Orchid\Screens\HeroesScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -112,4 +114,7 @@ Route::screen('/heroes_SVO/{soldier}', HeroesEditScreen::class)
     ->name('platform.heroes.edit');
 Route::screen('/heroes_SVO', HeroesScreen::class )->name('platform.heroes');
 
-//Route::screen('idea', Idea::class, 'platform.screens.idea');
+Route::screen('/glorious_names/{glorious_name}', GloriousNamesEditScreen::class)
+    ->name('platform.glorious_names.edit');
+Route::screen('/glorious_names', GloriousNamesScreen::class )->name('platform.glorious_names');
+
