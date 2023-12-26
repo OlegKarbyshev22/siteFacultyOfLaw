@@ -12,10 +12,14 @@ use App\Orchid\Screens\Examples\ExampleGridScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use App\Orchid\Screens\FacesVictoryEditScreen;
+use App\Orchid\Screens\FacesVictoryScreen;
 use App\Orchid\Screens\GloriousNamesEditScreen;
 use App\Orchid\Screens\GloriousNamesScreen;
 use App\Orchid\Screens\HeroesEditScreen;
 use App\Orchid\Screens\HeroesScreen;
+use App\Orchid\Screens\LeadershipsEditScreen;
+use App\Orchid\Screens\LeadershipsScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
@@ -110,11 +114,18 @@ Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.exam
 Route::screen('/news', NewsScreen::class)->name('platform.news');
 Route::screen('/news/create', CreateNewsScreen::class)->name('platform.create.news');
 
+Route::screen('/heroes_SVO', HeroesScreen::class )->name('platform.heroes');
 Route::screen('/heroes_SVO/{soldier}', HeroesEditScreen::class)
     ->name('platform.heroes.edit');
-Route::screen('/heroes_SVO', HeroesScreen::class )->name('platform.heroes');
 
+Route::screen('/glorious_names', GloriousNamesScreen::class )->name('platform.glorious_names');
 Route::screen('/glorious_names/{glorious_name}', GloriousNamesEditScreen::class)
     ->name('platform.glorious_names.edit');
-Route::screen('/glorious_names', GloriousNamesScreen::class )->name('platform.glorious_names');
 
+Route::screen('/faces_victory', FacesVictoryScreen::class )->name('platform.faces_victory');
+Route::screen('/faces_victory/{facesVictory}', FacesVictoryEditScreen::class)
+    ->name('platform.faces_victory.edit');
+
+Route::screen('/leaderships', LeadershipsScreen::class )->name('platform.leaderships');
+Route::screen('/leaderships/{leaderships}', LeadershipsEditScreen::class)
+    ->name('platform.leaderships.edit');

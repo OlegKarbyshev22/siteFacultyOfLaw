@@ -2,10 +2,8 @@
 
 namespace App\Orchid\Screens;
 
-
-use App\Models\Soldier;
+use App\Models\FacesVictory;
 use Illuminate\Http\Request;
-use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
@@ -13,8 +11,8 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
-use App\Orchid\Screens\HeroesEditScreen;
-class HeroesScreen extends Screen
+
+class FacesVictoryScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -24,7 +22,7 @@ class HeroesScreen extends Screen
     public function query(): iterable
     {
         return [
-            'soldiers' => Soldier::latest()->paginate(10)
+                'facesVictory' => FacesVictory::latest()->paginate(10)
         ];
     }
 
@@ -35,7 +33,7 @@ class HeroesScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Герои СВО';
+        return 'Лица победы';
     }
 
     /**
@@ -46,8 +44,8 @@ class HeroesScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            ModalToggle::make('Добавить героя')
-                ->modal('HeroesCreateModal')
+            ModalToggle::make('Добавить')
+                ->modal('facesVictoryCreateModal')
                 ->method('create')
                 ->icon('full-screen'),
         ];
@@ -61,9 +59,9 @@ class HeroesScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::table('soldiers', [
-                TD::make('path_image', 'Фото')->width('150')->render(function (Soldier $soldiers) {
-                    $imagePath = asset('storage/images/soldiers/' . $soldiers->path_image);
+            Layout::table('facesVictory', [
+                TD::make('path_image', 'Фото')->width('150')->render(function (FacesVictory $facesVictory) {
+                    $imagePath = asset('storage/images/faces_of_victory/' . $facesVictory->path_image);
                     return "<img src='{$imagePath}' alt='{$imagePath}' class='mw-100 d-block img-fluid rounded-1 w-100'>" ;
                 }),
                 TD::make('first_name', 'Имя'),
@@ -72,37 +70,35 @@ class HeroesScreen extends Screen
                 TD::make('patronymic', 'Отчество'),
                 TD::make('description', 'Описание')->width(300),
                 TD::make('id', 'Изменить')
-                    ->render(function (Soldier $soldier) {
-                        return Link::make('Изменить')->route('platform.heroes.edit', $soldier);
+                    ->render(function (FacesVictory $facesVictory) {
+                        return Link::make('Изменить')->route('platform.faces_victory.edit', $facesVictory);
                     }),
             ]),
 
-            Layout::modal('HeroesCreateModal', [
+
+            Layout::modal('facesVictoryCreateModal', [
                 Layout::rows([
                     Input::make('first_name')->title('Имя'),
                     Input::make('last_name')->title('Фамилия'),
                     Input::make('patronymic')->title('Отчество'),
                     TextArea::make('description')->title('Краткое описание'),
-                    Input::make('image')->type('file')->title("Прикрепить изображение героя")->required(),
+                    Input::make('image')->type('file')->title("Прикрепить изображение")->required(),
                 ]),
-            ])->title('Добавить героя СВО')->applyButton('Добавить')->closeButton('Закрыть'),
-
-
+            ])->title('Добавить')->applyButton('Добавить')->closeButton('Закрыть'),
         ];
     }
 
-    public function create(Soldier $soldiers, Request $request)
+    public function create(FacesVictory $facesVictory, Request $request)
     {
-        $soldiers->first_name = $request->input('first_name');
-        $soldiers->last_name = $request->input('last_name');
-        $soldiers->patronymic = $request->input('patronymic');
-        $soldiers->description = $request->input('description');
+        $facesVictory->first_name = $request->input('first_name');
+        $facesVictory->last_name = $request->input('last_name');
+        $facesVictory->patronymic = $request->input('patronymic');
+        $facesVictory->description = $request->input('description');
         $file = $request->file('image');
         $filename = $file->getClientOriginalName();
-        $file->storeAs('public/images/soldiers/', $filename);
-        $soldiers->path_image = $filename;
-        $soldiers->save();
-
-        return redirect()->route('platform.heroes');
+        $file->storeAs('public/images/faces_of_victory/', $filename);
+        $facesVictory->path_image = $filename;
+        $facesVictory->save();
+        return redirect()->route('platform.faces_victory');
     }
 }

@@ -29,7 +29,7 @@ class NewsScreen extends Screen
     public function query(): array
     {
         return [
-            'news' => News::all()
+            'news' => News::latest()->paginate(10)
         ];
     }
 

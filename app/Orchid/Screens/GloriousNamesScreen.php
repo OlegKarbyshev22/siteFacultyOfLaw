@@ -19,10 +19,11 @@ class GloriousNamesScreen extends Screen
      *
      * @return array
      */
+    //public $glorious_name = Glorious_name::latest()->paginate(1);
     public function query(): iterable
     {
         return [
-            'gloriousNames' => Glorious_name::paginate(10)
+            'gloriousNames' => Glorious_name::latest()->paginate(10)
         ];
     }
 
