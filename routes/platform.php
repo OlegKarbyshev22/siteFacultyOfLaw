@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\NewsController;
 use App\Orchid\Screens\CreateNewsScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
@@ -14,12 +15,14 @@ use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\FacesVictoryEditScreen;
 use App\Orchid\Screens\FacesVictoryScreen;
+use App\Orchid\Screens\GetNewsScreen;
 use App\Orchid\Screens\GloriousNamesEditScreen;
 use App\Orchid\Screens\GloriousNamesScreen;
 use App\Orchid\Screens\HeroesEditScreen;
 use App\Orchid\Screens\HeroesScreen;
 use App\Orchid\Screens\LeadershipsEditScreen;
 use App\Orchid\Screens\LeadershipsScreen;
+use App\Orchid\Screens\NewsEditScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
@@ -129,3 +132,10 @@ Route::screen('/faces_victory/{facesVictory}', FacesVictoryEditScreen::class)
 Route::screen('/leaderships', LeadershipsScreen::class )->name('platform.leaderships');
 Route::screen('/leaderships/{leaderships}', LeadershipsEditScreen::class)
     ->name('platform.leaderships.edit');
+
+
+Route::screen('/getNews', GetNewsScreen::class )->name('platform.get_news');
+Route::screen('/getNews/{news}', NewsEditScreen::class)
+    ->name('platform.news.edit');
+//Route::screen('/getNews/accept/{news}', GetNewsScreen::class)->name('platform.news_accept');
+Route::screen('/memory_book', GetNewsScreen::class )->name('platform.memory_book');

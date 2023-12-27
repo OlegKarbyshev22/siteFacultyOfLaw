@@ -76,6 +76,7 @@ class CreateNewsScreen extends Screen
         $file->storeAs('public/images', $filename);
         $news->path_image = $filename;
         $news->description = $request->input('html');
+        $news->status = "approved";
         $news->save();
         Alert::info('You have successfully created a post.');
         return redirect()->route('platform.news');
