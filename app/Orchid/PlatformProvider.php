@@ -37,6 +37,9 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Новости')
                 ->icon('envelope-letter')
                 ->route('platform.news'),
+            Menu::make('Новости на рассмотрении')
+                ->icon('envelope-letter')
+                ->route('platform.get_news'),
             Menu::make('Герои СВО')
                 ->icon('envelope-letter')
                 ->route('platform.heroes'),
@@ -48,7 +51,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.faces_victory'),
             Menu::make('Руководители')
                 ->icon('envelope-letter')
-                ->route('platform.leaderships')
+                ->route('platform.leaderships'),
+            Menu::make('Книга памяти')
+                ->icon('envelope-letter')
+                ->route('platform.memory_book')
 
         ];
     }

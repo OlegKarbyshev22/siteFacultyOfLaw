@@ -36,3 +36,4 @@ Route::get('/challenges_new_age', function () {
 
 Route::get('/send_news', [NewsController::class, 'send'])->name('news.create');
 Route::post('/send_news/store', [NewsController::class, 'store'])->name('news.store');
+
