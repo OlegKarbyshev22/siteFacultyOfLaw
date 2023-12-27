@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class NewsController extends Controller
 {
@@ -52,4 +53,11 @@ class NewsController extends Controller
         // Редирект или другая логика в зависимости от вашего случая
         return redirect()->route('platform.get_news', $news);
     }
+
+	public function show() : View
+	{
+		return view("layouts.news", [
+			"news_list" => News::all()
+		]);
+	}
 }
