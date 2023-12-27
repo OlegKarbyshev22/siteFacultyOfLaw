@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <section id="gallery_glorious_names">
+    <section id="memorialBook">
         <div class="container">
-            <h2>Галерея славных имен</h2>
+            <h2>Книга памяти</h2>
             <div class="wrapper">
                 <!-- <div>
                     <img src="/images/lovepik-business-men-in-suits-picture_501462426.jpg" alt="">
@@ -35,15 +35,15 @@
                 <div>
                     <img src="/images/lovepik-business-men-in-suits-picture_501462426.jpg" alt="">
                     <p>Разник Абрам Маркович</p>
-                </div> -->
+                </div>
+            </div> -->
 
-				@foreach ($names_of_glory as $name)
-					<div>
-						<img src = "{{ $name->path_image }}" alt = "">
-						<p>{{ $name->last_name . " " . $name->first_name . " " . $name->patronymic }}</p>
-					</div>
-				@endforeach
-            </div>
+			@foreach ($memorial_book as $honorable_name)
+				<div>
+                    <img src = "{{ $honorable_name->path_image }}" alt="">
+                    <p>{{ $honorable_name->last_name . " " . $honorable_name->first_name . " " . $honorable_name->patronymic }}</p>
+                </div>
+			@endforeach
         </div>
     </section>
 @endsection

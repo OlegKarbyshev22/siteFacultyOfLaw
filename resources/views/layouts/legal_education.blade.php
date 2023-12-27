@@ -24,7 +24,7 @@
             <h2>ЛИЦА ПОБЕДЫ</h2>
             <div class="faces_of_victory">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
+                    <!-- <div class="item">
                         <img src="/images/lovepik-business-men-in-suits-picture_501462426.jpg" alt="">
                         <p>Разник Абрам Маркович</p>
                     </div>
@@ -35,14 +35,20 @@
                     <div class="item">
                         <img src="/images/lovepik-business-men-in-suits-picture_501462426.jpg" alt="">
                         <p>Пермяков</p>
-                    </div>
+                    </div> -->
 
+					@foreach ($heroes as $hero)
+						<div class = "item">
+							<img src = "{{ $hero->path_image }}" alt = "">
+							<p>{{ $hero->last_name . " " . $hero->first_name . " " . $hero->patronymic }}</p>
+						</div>
+					@endforeach
                 </div>
             </div>
             <h2>Руководители от УКП ВЮЗИ до Юридического факультета</h2>
             <div class="management">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
+                    <!-- <div class="item">
                         <img src="/images/lovepik-business-men-in-suits-picture_501462426.jpg" alt="">
                         <p>-</p>
                     </div>
@@ -61,7 +67,14 @@
                     <div class="item">
                         <img src="/images/lovepik-business-men-in-suits-picture_501462426.jpg" alt="">
                         <p>-</p>
-                    </div>
+                    </div> -->
+
+					@foreach ($personel as $manager)
+						<div class = "item">
+							<img src = "{{ $manager->path_image }}" alt = "">
+							<p>{{ $manager->last_name . " " . $manager->first_name . " " . $manager->patronymic }}</p>
+						</div>
+					@endforeach
                 </div>
             </div>
         </div>

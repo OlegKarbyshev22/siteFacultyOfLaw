@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\MemorialBookController;
+use App\Http\Controllers\NamesOfGloryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SoldierController;
+use App\Models\FacesVictory;
+use App\Models\Leadership;
+use App\Models\Soldier;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,16 +25,15 @@ Route::get('/', function () {
 });
 
 Route::get('/legalEducation', function () {
-    return view('layouts.legal_education');
+    return view('layouts.legal_education', [
+		"heroes" => FacesVictory::all(),
+		"personel" => Leadership::all()
+	]);
 });
 
-Route::get('/gallery_glorious_names', function () {
-    return view('layouts.gallery_glorious_names');
-});
-
-Route::get('/participants_SVO', function () {
-    return view('layouts.participants');
-});
+Route::get('/gallery_glorious_names', [NamesOfGloryController::class, "show"]);
+Route::get('/participants_SVO', [SoldierController::class, "show"]);
+Route::get('/memorial_book', [MemorialBookController::class, "show"]);
 
 Route::get('/challenges_new_age', function () {
     return view('layouts.challenges_new_age');
