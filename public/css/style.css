@@ -197,7 +197,39 @@
     padding-left: 10px;
 }
 
-#gallery_SVO a {
+#memorialBook a {
+    color: #030394;
+}
+
+#memorialBook h2{
+    text-align: center;
+    color: #430052;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#memorialBook .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#memorialBook img {
+    width: 230px;
+    height: 280px;
+    padding: 10px;
+}
+
+#memorialBook p {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+#memorialBook a {
     color: #030394;
 }
 
@@ -459,6 +491,11 @@
     .text {
         margin-right: 0;
     }
+
+	.image
+	{
+		max-width: 40%
+	}
 }
 
 
