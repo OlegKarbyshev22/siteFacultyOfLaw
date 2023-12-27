@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SoldierController;
 use App\Models\FacesVictory;
 use App\Models\Leadership;
+use App\Models\News;
 use App\Models\Soldier;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::get('/', [NewsController::class, "show"]);
 
 Route::get('/legalEducation', function () {
     return view('layouts.legal_education', [
