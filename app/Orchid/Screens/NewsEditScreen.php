@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
@@ -64,9 +65,10 @@ class NewsEditScreen extends Screen
             Layout::rows([
                 Input::make('title')->title("Название новости"),
                 Input::make('path_image')->type('file')->title("Прикрепить главное изображение"),
-                Quill::make('description')->toolbar(["text", "color", "header", "list", "format", "media"])->title("Описание"),
+                //Quill::make('description')->toolbar(["text", "color", "header", "list", "format", "media"])->title("Описание"),
                 //Picture::make('picture'),
                 //SimpleMDE::make('markdown'),
+                SimpleMDE::make('description'),
                 Button::make('Обновить')->method('update')
             ]),
         ];

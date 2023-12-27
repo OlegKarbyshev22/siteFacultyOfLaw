@@ -54,8 +54,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.leaderships'),
             Menu::make('Книга памяти')
                 ->icon('envelope-letter')
-                ->route('platform.memory_book')
-
+                ->route('platform.memory_book'),
+            Menu::make('Юридическое образование в контексте времени')
+                ->icon('envelope-letter')
+                ->route('platform.law')
         ];
     }
 

@@ -20,8 +20,12 @@ use App\Orchid\Screens\GloriousNamesEditScreen;
 use App\Orchid\Screens\GloriousNamesScreen;
 use App\Orchid\Screens\HeroesEditScreen;
 use App\Orchid\Screens\HeroesScreen;
+use App\Orchid\Screens\LawInTimeEditScreen;
+use App\Orchid\Screens\LawInTimeScreen;
 use App\Orchid\Screens\LeadershipsEditScreen;
 use App\Orchid\Screens\LeadershipsScreen;
+use App\Orchid\Screens\MemoryBookEditScreen;
+use App\Orchid\Screens\MemoryBookScreen;
 use App\Orchid\Screens\NewsEditScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
@@ -138,4 +142,11 @@ Route::screen('/getNews', GetNewsScreen::class )->name('platform.get_news');
 Route::screen('/getNews/{news}', NewsEditScreen::class)
     ->name('platform.news.edit');
 //Route::screen('/getNews/accept/{news}', GetNewsScreen::class)->name('platform.news_accept');
-Route::screen('/memory_book', GetNewsScreen::class )->name('platform.memory_book');
+
+Route::screen('/memory_book', MemoryBookScreen::class )->name('platform.memory_book');
+Route::screen('/memory_book/{memorybook}', MemoryBookEditScreen::class)
+    ->name('platform.memory_book.edit');
+
+Route::screen('/law_in_time', LawInTimeScreen::class )->name('platform.law');
+Route::screen('/law_in_time/{lawInTime}', LawInTimeEditScreen::class)
+    ->name('platform.law.edit');

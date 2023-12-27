@@ -29,7 +29,7 @@ class NewsScreen extends Screen
     public function query(): array
     {
         return [
-            'news' => News::where('status', 'approved')->latest()->paginate(2)
+            'news' => News::where('status', 'approved')->latest()->paginate(10)
         ];
     }
 

@@ -86,8 +86,6 @@ class HeroesScreen extends Screen
                     Input::make('image')->type('file')->title("Прикрепить изображение героя")->required(),
                 ]),
             ])->title('Добавить героя СВО')->applyButton('Добавить')->closeButton('Закрыть'),
-
-
         ];
     }
 

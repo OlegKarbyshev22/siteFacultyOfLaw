@@ -20,7 +20,7 @@ class GetNewsScreen extends Screen
     public function query(): iterable
     {
         return [
-            'news' => News::where('status', 'consideration')->latest()->paginate(2)
+            'news' => News::where('status', 'consideration')->latest()->paginate(10)
         ];
     }
 

@@ -39,7 +39,7 @@
 
 					@foreach ($heroes as $hero)
 						<div class = "item">
-							<img src = "{{ $hero->path_image }}" alt = "">
+                            <img src = "{{ asset('storage/images/faces_of_victory/' . $hero->path_image )}}" alt="">
 							<p>{{ $hero->last_name . " " . $hero->first_name . " " . $hero->patronymic }}</p>
 						</div>
 					@endforeach
