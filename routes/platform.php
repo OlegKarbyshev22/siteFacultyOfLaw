@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\NewsController;
-use App\Orchid\Screens\CreateNewsScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -13,27 +11,28 @@ use App\Orchid\Screens\Examples\ExampleGridScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
-use App\Orchid\Screens\FacesVictoryEditScreen;
-use App\Orchid\Screens\FacesVictoryScreen;
-use App\Orchid\Screens\GetNewsScreen;
-use App\Orchid\Screens\GloriousNamesEditScreen;
-use App\Orchid\Screens\GloriousNamesScreen;
-use App\Orchid\Screens\HeroesEditScreen;
-use App\Orchid\Screens\HeroesScreen;
-use App\Orchid\Screens\LawInTimeEditScreen;
-use App\Orchid\Screens\LawInTimeScreen;
-use App\Orchid\Screens\LeadershipsEditScreen;
-use App\Orchid\Screens\LeadershipsScreen;
-use App\Orchid\Screens\MemoryBookEditScreen;
-use App\Orchid\Screens\MemoryBookScreen;
-use App\Orchid\Screens\NewsEditScreen;
+use App\Orchid\Screens\FacesVictory\FacesVictoryEditScreen;
+use App\Orchid\Screens\FacesVictory\FacesVictoryScreen;
+use App\Orchid\Screens\GloriousNames\GloriousNamesEditScreen;
+use App\Orchid\Screens\GloriousNames\GloriousNamesScreen;
+use App\Orchid\Screens\Heroes\HeroesEditScreen;
+use App\Orchid\Screens\Heroes\HeroesScreen;
+use App\Orchid\Screens\LawInTime\LawInTimeEditScreen;
+use App\Orchid\Screens\LawInTime\LawInTimeScreen;
+use App\Orchid\Screens\Leaderships\LeadershipsEditScreen;
+use App\Orchid\Screens\Leaderships\LeadershipsScreen;
+use App\Orchid\Screens\MemoryBooks\MemoryBookEditScreen;
+use App\Orchid\Screens\MemoryBooks\MemoryBookScreen;
+use App\Orchid\Screens\News\CreateNewsScreen;
+use App\Orchid\Screens\News\GetNewsScreen;
+use App\Orchid\Screens\News\NewsEditScreen;
+use App\Orchid\Screens\News\NewsScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
-use App\Orchid\Screens\NewsScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -122,19 +121,19 @@ Route::screen('/news', NewsScreen::class)->name('platform.news');
 Route::screen('/news/create', CreateNewsScreen::class)->name('platform.create.news');
 
 Route::screen('/heroes_SVO', HeroesScreen::class )->name('platform.heroes');
-Route::screen('/heroes_SVO/{soldier}', HeroesEditScreen::class)
+Route::screen('/heroes_SVO/{outstandingPeople}', HeroesEditScreen::class)
     ->name('platform.heroes.edit');
 
 Route::screen('/glorious_names', GloriousNamesScreen::class )->name('platform.glorious_names');
-Route::screen('/glorious_names/{glorious_name}', GloriousNamesEditScreen::class)
+Route::screen('/glorious_names/{outstandingPeople}', GloriousNamesEditScreen::class)
     ->name('platform.glorious_names.edit');
 
 Route::screen('/faces_victory', FacesVictoryScreen::class )->name('platform.faces_victory');
-Route::screen('/faces_victory/{facesVictory}', FacesVictoryEditScreen::class)
+Route::screen('/faces_victory/{outstandingPeople}', FacesVictoryEditScreen::class)
     ->name('platform.faces_victory.edit');
 
 Route::screen('/leaderships', LeadershipsScreen::class )->name('platform.leaderships');
-Route::screen('/leaderships/{leaderships}', LeadershipsEditScreen::class)
+Route::screen('/leaderships/{outstandingPeople}', LeadershipsEditScreen::class)
     ->name('platform.leaderships.edit');
 
 
@@ -144,7 +143,7 @@ Route::screen('/getNews/{news}', NewsEditScreen::class)
 //Route::screen('/getNews/accept/{news}', GetNewsScreen::class)->name('platform.news_accept');
 
 Route::screen('/memory_book', MemoryBookScreen::class )->name('platform.memory_book');
-Route::screen('/memory_book/{memorybook}', MemoryBookEditScreen::class)
+Route::screen('/memory_book/{outstandingPeople}', MemoryBookEditScreen::class)
     ->name('platform.memory_book.edit');
 
 Route::screen('/law_in_time', LawInTimeScreen::class )->name('platform.law');
