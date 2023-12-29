@@ -73,7 +73,7 @@ class CreateNewsScreen extends Screen
         $news->title = $request->input('news.title');
         $file = $request->file('images');
         $filename = $file->getClientOriginalName();
-        $file->storeAs('public/images', $filename);
+        $file->storeAs('public/images/news/', $filename);
         $news->path_image = $filename;
         $news->description = $request->input('html');
         $news->status = "approved";

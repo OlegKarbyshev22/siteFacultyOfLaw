@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('glorious_names', function (Blueprint $table) {
+        Schema::create('outstanding_people', function (Blueprint $table) {
             $table->id();
-            $table->string("first_name", 40);
-            $table->string("last_name", 40);
-            $table->string("patronymic", 40);
-            $table->string("path_image");
+            $table->string("first_name");
+            $table->string("last_name");
+            $table->string("patronymic");
             $table->text("description");
+            $table->string('path_image');
+            $table->enum('category', ['facesVictory', 'gloriousName', 'leaderships', 'soldiers', 'memorialBooks']);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('glorious_names');
+        Schema::dropIfExists('outstanding_people');
     }
 };

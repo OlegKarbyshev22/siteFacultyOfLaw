@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\MemoryBook;
 
 use App\Models\MemorialBook;
 use Illuminate\Http\Request;
