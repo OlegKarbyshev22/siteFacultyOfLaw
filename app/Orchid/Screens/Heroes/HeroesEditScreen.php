@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Heroes;
 
-use Illuminate\Http\Request;
+use App\Models\OutstandingPeople;
 use App\Models\Soldier;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
@@ -18,12 +19,12 @@ class HeroesEditScreen extends Screen
      *
      * @return array
      */
-    public $soldier;
+    public $outstandingPeople;
 
-    public function query(Soldier $soldier): iterable
+    public function query(OutstandingPeople $outstandingPeople): iterable
     {
         return [
-            'soldier' => $soldier,
+            'outstandingPeople' => $outstandingPeople,
 
         ];
     }
@@ -35,7 +36,7 @@ class HeroesEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Герой' . ' ' . $this->soldier->first_name . ' ' . $this->soldier->last_name . ' ' . $this->soldier->patronymic;
+        return 'Герой' . ' ' . $this->outstandingPeople->first_name . ' ' . $this->outstandingPeople->last_name . ' ' . $this->outstandingPeople->patronymic;
     }
 
     /**
@@ -74,7 +75,7 @@ class HeroesEditScreen extends Screen
     }
 
 
-    public function update(Soldier $soldier, Request $request)
+    public function update(OutstandingPeople $outstandingPeople, Request $request)
     {
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
@@ -82,33 +83,33 @@ class HeroesEditScreen extends Screen
         $description = $request->input('description');
         if ($first_name != null)
         {
-            $soldier->update(['first_name' => $request->input('first_name')]);
+            $outstandingPeople->update(['first_name' => $request->input('first_name')]);
         }
         if ($last_name != null)
         {
-            $soldier->update(['last_name' => $request->input('last_name')]);
+            $outstandingPeople->update(['last_name' => $request->input('last_name')]);
         }
         if ($patronymic != null)
         {
-            $soldier->update(['patronymic' => $request->input('patronymic')]);
+            $outstandingPeople->update(['patronymic' => $request->input('patronymic')]);
         }
         if ($description != null)
         {
-            $soldier->update(['description' => $request->input('description')]);
+            $outstandingPeople->update(['description' => $request->input('description')]);
         }
         if($request->hasFile('path_image')){
             $file = $request->file('path_image');
             $filename = $file->getClientOriginalName();
             $file->storeAs('public/images/soldiers/', $filename);
-            $soldier->update(['path_image' => $filename]);
+            $outstandingPeople->update(['path_image' => $filename]);
         }
         Alert::info('Вы успешно обновили информацию');
         return redirect()->route('platform.heroes');
     }
 
-    public function remove(Soldier $soldier)
+    public function remove(OutstandingPeople $outstandingPeople)
     {
-        $soldier->delete();
+        $outstandingPeople->delete();
         Alert::info('Вы успешно удалили информацию');
         return redirect()->route('platform.heroes');
     }

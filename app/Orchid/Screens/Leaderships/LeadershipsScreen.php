@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Leaderships;
 
-use App\Models\Leadership;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
@@ -22,7 +22,7 @@ class LeadershipsScreen extends Screen
     public function query(): iterable
     {
         return [
-            'leadership' => Leadership::latest()->paginate(10)
+            'outstandingPeople' => OutstandingPeople::where('category', 'leaderships')->latest()->paginate(10)
         ];
     }
 
@@ -59,9 +59,9 @@ class LeadershipsScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::table('leadership', [
-                TD::make('path_image', 'Фото')->width('150')->render(function (Leadership $leadership) {
-                    $imagePath = asset('storage/images/leaderships/' . $leadership->path_image);
+            Layout::table('outstandingPeople', [
+                TD::make('path_image', 'Фото')->width('150')->render(function (OutstandingPeople $outstandingPeople) {
+                    $imagePath = asset('storage/images/leaderships/' . $outstandingPeople->path_image);
                     return "<img src='{$imagePath}' alt='{$imagePath}' class='mw-100 d-block img-fluid rounded-1 w-100'>" ;
                 }),
                 TD::make('first_name', 'Имя'),
@@ -70,8 +70,8 @@ class LeadershipsScreen extends Screen
                 TD::make('patronymic', 'Отчество'),
                 TD::make('description', 'Описание')->width(300),
                 TD::make('id', 'Изменить')
-                    ->render(function (Leadership $leadership) {
-                        return Link::make('Изменить')->route('platform.leaderships.edit', $leadership);
+                    ->render(function (OutstandingPeople $outstandingPeople) {
+                        return Link::make('Изменить')->route('platform.leaderships.edit', $outstandingPeople);
                     }),
             ]),
 
@@ -88,17 +88,18 @@ class LeadershipsScreen extends Screen
         ];
     }
 
-    public function create(Leadership $leadership, Request $request)
+    public function create(OutstandingPeople $outstandingPeople, Request $request)
     {
-        $leadership->first_name = $request->input('first_name');
-        $leadership->last_name = $request->input('last_name');
-        $leadership->patronymic = $request->input('patronymic');
-        $leadership->description = $request->input('description');
+        $outstandingPeople->first_name = $request->input('first_name');
+        $outstandingPeople->last_name = $request->input('last_name');
+        $outstandingPeople->patronymic = $request->input('patronymic');
+        $outstandingPeople->description = $request->input('description');
         $file = $request->file('image');
         $filename = $file->getClientOriginalName();
         $file->storeAs('public/images/leaderships/', $filename);
-        $leadership->path_image = $filename;
-        $leadership->save();
+        $outstandingPeople->path_image = $filename;
+        $outstandingPeople->category = "leaderships";
+        $outstandingPeople->save();
         return redirect()->route('platform.leaderships');
     }
 }

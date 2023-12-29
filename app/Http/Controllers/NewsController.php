@@ -45,15 +45,6 @@ class NewsController extends Controller
         return redirect()->route('news.create')->with('success', 'Новость успешно добавлена!');
     }
 
-    public function accept(News $news)
-    {
-
-        $news->update(['status' => 'approved']);
-
-        // Редирект или другая логика в зависимости от вашего случая
-        return redirect()->route('platform.get_news', $news);
-    }
-
 	public function show() : View
 	{
 		return view("layouts.news", [

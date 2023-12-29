@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Heroes;
 
 
-use App\Models\Soldier;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
-use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
@@ -13,7 +12,7 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
-use App\Orchid\Screens\HeroesEditScreen;
+
 class HeroesScreen extends Screen
 {
     /**
@@ -24,7 +23,7 @@ class HeroesScreen extends Screen
     public function query(): iterable
     {
         return [
-            'soldiers' => Soldier::latest()->paginate(10)
+            'outstandingPeople' => OutstandingPeople::where('category', 'soldiers')->latest()->paginate(10)
         ];
     }
 
@@ -61,8 +60,8 @@ class HeroesScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::table('soldiers', [
-                TD::make('path_image', 'Фото')->width('150')->render(function (Soldier $soldiers) {
+            Layout::table('outstandingPeople', [
+                TD::make('path_image', 'Фото')->width('150')->render(function (OutstandingPeople $soldiers) {
                     $imagePath = asset('storage/images/soldiers/' . $soldiers->path_image);
                     return "<img src='{$imagePath}' alt='{$imagePath}' class='mw-100 d-block img-fluid rounded-1 w-100'>" ;
                 }),
@@ -72,7 +71,7 @@ class HeroesScreen extends Screen
                 TD::make('patronymic', 'Отчество'),
                 TD::make('description', 'Описание')->width(300),
                 TD::make('id', 'Изменить')
-                    ->render(function (Soldier $soldier) {
+                    ->render(function (OutstandingPeople $soldier) {
                         return Link::make('Изменить')->route('platform.heroes.edit', $soldier);
                     }),
             ]),
@@ -89,7 +88,7 @@ class HeroesScreen extends Screen
         ];
     }
 
-    public function create(Soldier $soldiers, Request $request)
+    public function create(OutstandingPeople $soldiers, Request $request)
     {
         $soldiers->first_name = $request->input('first_name');
         $soldiers->last_name = $request->input('last_name');
@@ -99,6 +98,7 @@ class HeroesScreen extends Screen
         $filename = $file->getClientOriginalName();
         $file->storeAs('public/images/soldiers/', $filename);
         $soldiers->path_image = $filename;
+        $soldiers->category = "soldiers";
         $soldiers->save();
 
         return redirect()->route('platform.heroes');

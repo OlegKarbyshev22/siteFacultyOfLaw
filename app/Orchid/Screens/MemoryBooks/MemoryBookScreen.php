@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens\MemoryBook;
+namespace App\Orchid\Screens\MemoryBooks;
 
 use App\Models\MemorialBook;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
@@ -22,7 +23,7 @@ class MemoryBookScreen extends Screen
     public function query(): iterable
     {
         return [
-            'memoryBooks' => MemorialBook::latest()->paginate(10)
+            'outstandingPeople' => OutstandingPeople::where('category', 'memorialBooks')->latest()->paginate(10)
         ];
     }
 
@@ -59,9 +60,9 @@ class MemoryBookScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::table('memoryBooks', [
-                TD::make('path_image', 'Фото')->width('150')->render(function (MemorialBook $memorialBook) {
-                    $imagePath = asset('storage/images/memorial_book/' . $memorialBook->path_image);
+            Layout::table('outstandingPeople', [
+                TD::make('path_image', 'Фото')->width('150')->render(function (OutstandingPeople $outstandingPeople) {
+                    $imagePath = asset('storage/images/memorial_book/' . $outstandingPeople->path_image);
                     return "<img src='{$imagePath}' alt='{$imagePath}' class='mw-100 d-block img-fluid rounded-1 w-100'>" ;
                 }),
                 TD::make('first_name', 'Имя'),
@@ -69,8 +70,8 @@ class MemoryBookScreen extends Screen
                 TD::make('patronymic', 'Отчество'),
                 TD::make('description', 'Описание')->width(300),
                 TD::make('id', 'Изменить')
-                    ->render(function (MemorialBook $memorialBook) {
-                        return Link::make('Изменить')->route('platform.memory_book.edit', $memorialBook);
+                    ->render(function (OutstandingPeople $outstandingPeople) {
+                        return Link::make('Изменить')->route('platform.memory_book.edit', $outstandingPeople);
                     }),
             ]),
 
@@ -86,17 +87,18 @@ class MemoryBookScreen extends Screen
         ];
     }
 
-    public function create(MemorialBook $memorialBook, Request $request)
+    public function create(OutstandingPeople $outstandingPeople, Request $request)
     {
-        $memorialBook->first_name = $request->input('first_name');
-        $memorialBook->last_name = $request->input('last_name');
-        $memorialBook->patronymic = $request->input('patronymic');
-        $memorialBook->description = $request->input('description');
+        $outstandingPeople->first_name = $request->input('first_name');
+        $outstandingPeople->last_name = $request->input('last_name');
+        $outstandingPeople->patronymic = $request->input('patronymic');
+        $outstandingPeople->description = $request->input('description');
         $file = $request->file('image');
         $filename = $file->getClientOriginalName();
         $file->storeAs('public/images/memorial_book/', $filename);
-        $memorialBook->path_image = $filename;
-        $memorialBook->save();
+        $outstandingPeople->path_image = $filename;
+        $outstandingPeople->category = "memorialBooks";
+        $outstandingPeople->save();
         return redirect()->route('platform.memory_book');
     }
 }

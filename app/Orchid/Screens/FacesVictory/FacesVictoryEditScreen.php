@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\FacesVictory;
 
 use App\Models\FacesVictory;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
@@ -18,11 +19,11 @@ class FacesVictoryEditScreen extends Screen
      *
      * @return array
      */
-    public $facesVictory;
-    public function query(FacesVictory $facesVictory): iterable
+    public $outstandingPeople;
+    public function query(OutstandingPeople $outstandingPeople): iterable
     {
         return [
-            'facesVictory' => $facesVictory
+            'outstandingPeople' => $outstandingPeople
         ];
     }
 
@@ -33,7 +34,7 @@ class FacesVictoryEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Лицо победы: ' . $this->facesVictory->first_name . ' ' . $this->facesVictory->last_name . ' ' . $this->facesVictory->patronymic;
+        return 'Лицо победы: ' . $this->outstandingPeople->first_name . ' ' . $this->outstandingPeople->last_name . ' ' . $this->outstandingPeople->patronymic;
     }
 
     /**
@@ -69,7 +70,7 @@ class FacesVictoryEditScreen extends Screen
         ];
     }
 
-    public function update(FacesVictory $facesVictory, Request $request)
+    public function update(OutstandingPeople $outstandingPeople, Request $request)
     {
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
@@ -77,33 +78,33 @@ class FacesVictoryEditScreen extends Screen
         $description = $request->input('description');
         if ($first_name != null)
         {
-            $facesVictory->update(['first_name' => $request->input('first_name')]);
+            $outstandingPeople->update(['first_name' => $request->input('first_name')]);
         }
         if ($last_name != null)
         {
-            $facesVictory->update(['last_name' => $request->input('last_name')]);
+            $outstandingPeople->update(['last_name' => $request->input('last_name')]);
         }
         if ($patronymic != null)
         {
-            $facesVictory->update(['patronymic' => $request->input('patronymic')]);
+            $outstandingPeople->update(['patronymic' => $request->input('patronymic')]);
         }
         if ($description != null)
         {
-            $facesVictory->update(['description' => $request->input('description')]);
+            $outstandingPeople->update(['description' => $request->input('description')]);
         }
         if($request->hasFile('path_image')){
             $file = $request->file('path_image');
             $filename = $file->getClientOriginalName();
             $file->storeAs('public/images/faces_of_victory/', $filename);
-            $facesVictory->update(['path_image' => $filename]);
+            $outstandingPeople->update(['path_image' => $filename]);
         }
         Alert::info('Вы успешно обновили информацию');
         return redirect()->route('platform.faces_victory');
     }
 
-    public function remove(FacesVictory $facesVictory)
+    public function remove(OutstandingPeople $outstandingPeople)
     {
-        $facesVictory->delete();
+        $outstandingPeople->delete();
         Alert::info('Вы успешно удалили информацию');
         return redirect()->route('platform.faces_victory');
     }

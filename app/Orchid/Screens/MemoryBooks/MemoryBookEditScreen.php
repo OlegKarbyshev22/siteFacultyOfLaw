@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens\MemoryBook;
+namespace App\Orchid\Screens\MemoryBooks;
 
 use App\Models\MemorialBook;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
@@ -18,11 +19,11 @@ class MemoryBookEditScreen extends Screen
      *
      * @return array
      */
-    public $memorybook;
-    public function query(MemorialBook $memorybook): iterable
+    public $outstandingPeople;
+    public function query(OutstandingPeople $outstandingPeople): iterable
     {
         return [
-            'memorybook' => $memorybook
+            'outstandingPeople' => $outstandingPeople
         ];
     }
 
@@ -69,7 +70,7 @@ class MemoryBookEditScreen extends Screen
         ];
     }
 
-    public function update(MemorialBook $memorybook, Request $request)
+    public function update(OutstandingPeople $outstandingPeople, Request $request)
     {
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
@@ -77,33 +78,33 @@ class MemoryBookEditScreen extends Screen
         $description = $request->input('description');
         if ($first_name != null)
         {
-            $memorybook->update(['first_name' => $request->input('first_name')]);
+            $outstandingPeople->update(['first_name' => $request->input('first_name')]);
         }
         if ($last_name != null)
         {
-            $memorybook->update(['last_name' => $request->input('last_name')]);
+            $outstandingPeople->update(['last_name' => $request->input('last_name')]);
         }
         if ($patronymic != null)
         {
-            $memorybook->update(['patronymic' => $request->input('patronymic')]);
+            $outstandingPeople->update(['patronymic' => $request->input('patronymic')]);
         }
         if ($description != null)
         {
-            $memorybook->update(['description' => $request->input('description')]);
+            $outstandingPeople->update(['description' => $request->input('description')]);
         }
         if($request->hasFile('path_image')){
             $file = $request->file('path_image');
             $filename = $file->getClientOriginalName();
             $file->storeAs('public/images/memorial_book/', $filename);
-            $memorybook->update(['path_image' => $filename]);
+            $outstandingPeople->update(['path_image' => $filename]);
         }
         Alert::info('Вы успешно обновили информацию');
         return redirect()->route('platform.memory_book');
     }
 
-    public function remove(MemorialBook $memorybook)
+    public function remove(OutstandingPeople $outstandingPeople)
     {
-        $memorybook->delete();
+        $outstandingPeople->delete();
         Alert::info('Вы успешно удалили информацию');
         return redirect()->route('platform.memory_book');
     }

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\News;
 
 use App\Models\News;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;

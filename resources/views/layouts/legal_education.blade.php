@@ -71,7 +71,7 @@
 
 					@foreach ($personel as $manager)
 						<div class = "item">
-							<img src = "{{ $manager->path_image }}" alt = "">
+                            <img src = "{{ asset('storage/images/leaderships/' . $manager->path_image )}}" alt="">
 							<p>{{ $manager->last_name . " " . $manager->first_name . " " . $manager->patronymic }}</p>
 						</div>
 					@endforeach

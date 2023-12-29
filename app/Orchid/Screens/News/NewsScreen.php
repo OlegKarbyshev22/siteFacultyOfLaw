@@ -1,24 +1,13 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\News;
 
 use App\Models\News;
-use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Screen\Fields\Quill;
-use Orchid\Screen\Fields\SimpleMDE;
-use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Link;
-use Illuminate\Http\Request;
 use Orchid\Screen\Screen;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\TextArea;
-use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Fields\Select;
-use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\TD;
-use function Termwind\render;
-use Orchid\Support\Facades\Alert;
+use Orchid\Support\Facades\Layout;
+
 class NewsScreen extends Screen
 {
     /**

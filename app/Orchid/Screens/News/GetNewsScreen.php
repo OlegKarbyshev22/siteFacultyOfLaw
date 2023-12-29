@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\News;
 
-use App\Models\Leadership;
 use App\Models\News;
-use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\GloriousNames;
 
 use App\Models\Glorious_name;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
@@ -23,7 +24,7 @@ class GloriousNamesScreen extends Screen
     public function query(): iterable
     {
         return [
-            'gloriousNames' => Glorious_name::latest()->paginate(10)
+            'outstandingPeople' => OutstandingPeople::where('category', 'gloriousName')->latest()->paginate(10)
         ];
     }
 
@@ -60,9 +61,9 @@ class GloriousNamesScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::table('gloriousNames', [
-                TD::make('path_image', 'Фото')->width('150')->render(function (Glorious_name $glorious_name) {
-                    $imagePath = asset('storage/images/glorious_names/' . $glorious_name->path_image);
+            Layout::table('outstandingPeople', [
+                TD::make('path_image', 'Фото')->width('150')->render(function (OutstandingPeople $outstandingPeople) {
+                    $imagePath = asset('storage/images/glorious_names/' . $outstandingPeople->path_image);
                     return "<img src='{$imagePath}' alt='{$imagePath}' class='mw-100 d-block img-fluid rounded-1 w-100'>" ;
                 }),
                 TD::make('first_name', 'Имя'),
@@ -71,8 +72,8 @@ class GloriousNamesScreen extends Screen
                 TD::make('patronymic', 'Отчество'),
                 TD::make('description', 'Описание')->width(300),
                 TD::make('id', 'Изменить')
-                    ->render(function (Glorious_name $glorious_name) {
-                        return Link::make('Изменить')->route('platform.glorious_names.edit', $glorious_name);
+                    ->render(function (OutstandingPeople $outstandingPeople) {
+                        return Link::make('Изменить')->route('platform.glorious_names.edit', $outstandingPeople);
                     }),
             ]),
 
@@ -89,18 +90,18 @@ class GloriousNamesScreen extends Screen
         ];
     }
 
-    public function create(Glorious_name $glorious_name, Request $request)
+    public function create(OutstandingPeople $outstandingPeople, Request $request)
     {
-        $glorious_name->first_name = $request->input('first_name');
-        $glorious_name->last_name = $request->input('last_name');
-        $glorious_name->patronymic = $request->input('patronymic');
-        $glorious_name->description = $request->input('description');
+        $outstandingPeople->first_name = $request->input('first_name');
+        $outstandingPeople->last_name = $request->input('last_name');
+        $outstandingPeople->patronymic = $request->input('patronymic');
+        $outstandingPeople->description = $request->input('description');
         $file = $request->file('image');
         $filename = $file->getClientOriginalName();
         $file->storeAs('public/images/glorious_names/', $filename);
-        $glorious_name->path_image = $filename;
-        $glorious_name->save();
-
+        $outstandingPeople->path_image = $filename;
+        $outstandingPeople->category = "gloriousName";
+        $outstandingPeople->save();
         return redirect()->route('platform.glorious_names');
     }
 

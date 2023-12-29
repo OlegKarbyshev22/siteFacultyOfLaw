@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\News;
 
 use App\Models\News;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Screen;
-use Orchid\Screen\Fields\Input;
-use Orchid\Support\Facades\Layout;
-use Illuminate\Http\Request;
 use Orchid\Support\Facades\Alert;
+use Orchid\Support\Facades\Layout;
+
 class CreateNewsScreen extends Screen
 {
     /**

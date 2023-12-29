@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\GloriousNames;
 
 use App\Models\Glorious_name;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
@@ -18,12 +19,12 @@ class GloriousNamesEditScreen extends Screen
      *
      * @return array
      */
-    public $glorious_name;
+    public $outstandingPeople;
 
-    public function query(Glorious_name $glorious_name): iterable
+    public function query(OutstandingPeople $outstandingPeople): iterable
     {
         return [
-            'glorious_name' => $glorious_name,
+            'outstandingPeople' => $outstandingPeople,
         ];
     }
 
@@ -34,7 +35,7 @@ class GloriousNamesEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Лицо победы: ' . $this->glorious_name->first_name . ' ' . $this->glorious_name->last_name . ' ' . $this->glorious_name->patronymic;
+        return 'Лицо победы: ' . $this->outstandingPeople->first_name . ' ' . $this->outstandingPeople->last_name . ' ' . $this->outstandingPeople->patronymic;
     }
 
     /**
@@ -70,7 +71,7 @@ class GloriousNamesEditScreen extends Screen
         ];
     }
 
-    public function update(Glorious_name $glorious_name, Request $request)
+    public function update(OutstandingPeople $outstandingPeople, Request $request)
     {
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
@@ -78,33 +79,33 @@ class GloriousNamesEditScreen extends Screen
         $description = $request->input('description');
         if ($first_name != null)
         {
-            $glorious_name->update(['first_name' => $request->input('first_name')]);
+            $outstandingPeople->update(['first_name' => $request->input('first_name')]);
         }
         if ($last_name != null)
         {
-            $glorious_name->update(['last_name' => $request->input('last_name')]);
+            $outstandingPeople->update(['last_name' => $request->input('last_name')]);
         }
         if ($patronymic != null)
         {
-            $glorious_name->update(['patronymic' => $request->input('patronymic')]);
+            $outstandingPeople->update(['patronymic' => $request->input('patronymic')]);
         }
         if ($description != null)
         {
-            $glorious_name->update(['description' => $request->input('description')]);
+            $outstandingPeople->update(['description' => $request->input('description')]);
         }
         if($request->hasFile('path_image')){
             $file = $request->file('path_image');
             $filename = $file->getClientOriginalName();
             $file->storeAs('public/images/glorious_names/', $filename);
-            $glorious_name->update(['path_image' => $filename]);
+            $outstandingPeople->update(['path_image' => $filename]);
         }
         Alert::info('Вы успешно обновили информацию');
         return redirect()->route('platform.glorious_names');
     }
 
-    public function remove(Glorious_name $glorious_name)
+    public function remove(OutstandingPeople $outstandingPeople)
     {
-        $glorious_name->delete();
+        $outstandingPeople->delete();
         Alert::info('Вы успешно удалили информацию');
         return redirect()->route('platform.glorious_names');
     }

@@ -40,7 +40,7 @@
 
 			@foreach ($memorial_book as $honorable_name)
 				<div>
-                    <img src = "{{ $honorable_name->path_image }}" alt="">
+                    <img src = "{{ asset('storage/images/memorial_book/' . $honorable_name->path_image )}}" alt="">
                     <p>{{ $honorable_name->last_name . " " . $honorable_name->first_name . " " . $honorable_name->patronymic }}</p>
                 </div>
 			@endforeach

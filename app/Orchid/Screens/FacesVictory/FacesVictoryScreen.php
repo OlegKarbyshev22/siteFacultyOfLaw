@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\FacesVictory;
 
 use App\Models\FacesVictory;
+use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
@@ -22,7 +23,7 @@ class FacesVictoryScreen extends Screen
     public function query(): iterable
     {
         return [
-                'facesVictory' => FacesVictory::latest()->paginate(10)
+            'outstandingPeople' => OutstandingPeople::where('category', 'facesVictory')->latest()->paginate(10)
         ];
     }
 
@@ -59,9 +60,9 @@ class FacesVictoryScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::table('facesVictory', [
-                TD::make('path_image', 'Фото')->width('150')->render(function (FacesVictory $facesVictory) {
-                    $imagePath = asset('storage/images/faces_of_victory/' . $facesVictory->path_image);
+            Layout::table('outstandingPeople', [
+                TD::make('path_image', 'Фото')->width('150')->render(function (OutstandingPeople $outstandingPeople) {
+                    $imagePath = asset('storage/images/faces_of_victory/' . $outstandingPeople->path_image);
                     return "<img src='{$imagePath}' alt='{$imagePath}' class='mw-100 d-block img-fluid rounded-1 w-100'>" ;
                 }),
                 TD::make('first_name', 'Имя'),
@@ -70,8 +71,8 @@ class FacesVictoryScreen extends Screen
                 TD::make('patronymic', 'Отчество'),
                 TD::make('description', 'Описание')->width(300),
                 TD::make('id', 'Изменить')
-                    ->render(function (FacesVictory $facesVictory) {
-                        return Link::make('Изменить')->route('platform.faces_victory.edit', $facesVictory);
+                    ->render(function (OutstandingPeople $outstandingPeople) {
+                        return Link::make('Изменить')->route('platform.faces_victory.edit', $outstandingPeople);
                     }),
             ]),
 
@@ -88,17 +89,18 @@ class FacesVictoryScreen extends Screen
         ];
     }
 
-    public function create(FacesVictory $facesVictory, Request $request)
+    public function create(OutstandingPeople $outstandingPeople, Request $request)
     {
-        $facesVictory->first_name = $request->input('first_name');
-        $facesVictory->last_name = $request->input('last_name');
-        $facesVictory->patronymic = $request->input('patronymic');
-        $facesVictory->description = $request->input('description');
+        $outstandingPeople->first_name = $request->input('first_name');
+        $outstandingPeople->last_name = $request->input('last_name');
+        $outstandingPeople->patronymic = $request->input('patronymic');
+        $outstandingPeople->description = $request->input('description');
         $file = $request->file('image');
         $filename = $file->getClientOriginalName();
         $file->storeAs('public/images/faces_of_victory/', $filename);
-        $facesVictory->path_image = $filename;
-        $facesVictory->save();
+        $outstandingPeople->path_image = $filename;
+        $outstandingPeople->category = "facesVictory";
+        $outstandingPeople->save();
         return redirect()->route('platform.faces_victory');
     }
 }

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\LawInTime;
 
 use App\Models\LawInTime;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
