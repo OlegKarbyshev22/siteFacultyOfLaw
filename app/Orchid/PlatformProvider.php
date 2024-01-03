@@ -35,29 +35,32 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
             Menu::make('Новости')
-                ->icon('envelope-letter')
+                ->icon('newspaper')
                 ->route('platform.news'),
             Menu::make('Новости на рассмотрении')
-                ->icon('envelope-letter')
+                ->icon('newspaper')
                 ->route('platform.get_news'),
             Menu::make('Герои СВО')
-                ->icon('envelope-letter')
+                ->icon('person-fill-add')
                 ->route('platform.heroes'),
             Menu::make('Славные имена')
-                ->icon('envelope-letter')
+                ->icon('person-fill-add')
                 ->route('platform.glorious_names'),
             Menu::make('Лица победы')
-                ->icon('envelope-letter')
+                ->icon('person-fill-add')
                 ->route('platform.faces_victory'),
             Menu::make('Руководители')
-                ->icon('envelope-letter')
+                ->icon('person-fill-add')
                 ->route('platform.leaderships'),
             Menu::make('Книга памяти')
-                ->icon('envelope-letter')
+                ->icon('person-fill-add')
                 ->route('platform.memory_book'),
             Menu::make('Юридическое образование в контексте времени')
-                ->icon('envelope-letter')
-                ->route('platform.law')
+                ->icon('grid')
+                ->route('platform.law'),
+            Menu::make('Вызовы нового времени')
+                ->icon('')
+                ->route('platform.challenges')
         ];
     }
 

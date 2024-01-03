@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\ChallengesNewAge\ChallengesNewAgeScreen;
+use App\Orchid\Screens\ChallengesNewAge\SectionEditScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -149,3 +151,6 @@ Route::screen('/memory_book/{outstandingPeople}', MemoryBookEditScreen::class)
 Route::screen('/law_in_time', LawInTimeScreen::class )->name('platform.law');
 Route::screen('/law_in_time/{lawInTime}', LawInTimeEditScreen::class)
     ->name('platform.law.edit');
+
+Route::screen('/challengesNewAge', ChallengesNewAgeScreen::class )->name('platform.challenges');
+Route::screen('/challengesNewAge/section/{section}', SectionEditScreen::class )->name('platform.section_edit');
