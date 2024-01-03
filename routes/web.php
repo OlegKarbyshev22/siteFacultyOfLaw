@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChallengesNewAge;
 use App\Http\Controllers\MemorialBookController;
 use App\Http\Controllers\NamesOfGloryController;
 use App\Http\Controllers\NewsController;
@@ -34,10 +35,7 @@ Route::get('/legalEducation', function () {
 Route::get('/gallery_glorious_names', [NamesOfGloryController::class, "show"]);
 Route::get('/participants_SVO', [SoldierController::class, "show"]);
 Route::get('/memorial_book', [MemorialBookController::class, "show"]);
-
-Route::get('/challenges_new_age', function () {
-    return view('layouts.challenges_new_age');
-});
+Route::get('/challenges_new_age', [ChallengesNewAge::class, "show"]);
 
 Route::get('/send_news', [NewsController::class, 'send'])->name('news.create');
 Route::post('/send_news/store', [NewsController::class, 'store'])->name('news.store');
