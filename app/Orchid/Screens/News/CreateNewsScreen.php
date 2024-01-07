@@ -59,7 +59,7 @@ class CreateNewsScreen extends Screen
             Layout::rows([
                 Input::make('news.title')->title("Название новости")->required(),
                 Input::make('images')->type('file')->title("Прикрепить главное изображение")->required(),
-                Quill::make('html')->toolbar(["text", "color", "header", "list", "format", "media"])->title("Описание")->required(),
+                Quill::make('html')->title("Описание")->required(),
                 //Picture::make('html'),
                 //SimpleMDE::make('html'),
                 Button::make('Добавить')->method('create')
