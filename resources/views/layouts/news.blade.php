@@ -10,7 +10,7 @@
 						<div class="news-card-content">
 							<div class="news-card-title">{{ $news->title }}</div>
 							<div class="news-card-date">{{ $news->created_at }}</div>
-							<div class="news-card-text">{{ $news->description }}</div>
+							<div class="news-card-text">{!! htmlspecialchars_decode($news->description) !!}</div>
 						</div>
 					</div>
 				@endif

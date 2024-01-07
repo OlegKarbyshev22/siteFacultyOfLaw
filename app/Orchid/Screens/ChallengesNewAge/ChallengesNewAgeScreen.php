@@ -112,9 +112,15 @@ class ChallengesNewAgeScreen extends Screen
     {
         $sectionId = $request->input('section');
         $existingContent = Content::where('section_id', $sectionId)->first();
+
         $file = $request->file('path_image');
-        $filename = $file->getClientOriginalName();
-        $file->storeAs('public/images/challenges/', $filename);
+
+        if ($file) {
+            $filename = $file->getClientOriginalName();
+            $file->storeAs('public/images/challenges/', $filename);
+        } else {
+            $filename = null; // Or provide a default filename or handle it accordingly
+        }
 
         if ($existingContent) {
             // Если контент уже существует, обновляем его
@@ -132,5 +138,6 @@ class ChallengesNewAgeScreen extends Screen
             Alert::success('Контент успешно добавлен');
         }
     }
+
 
 }

@@ -1,11 +1,11 @@
 .header {
-    
+
     background-image: url('/images/back_fon.jpg');
     background-position: center;
     min-height: 150px;
     font-family: 'Roboto', sans-serif;
     /*border-bottom: 2px #030394 solid;*/
-    
+
 }
 
 .container {
@@ -22,10 +22,10 @@
 }
 
 .header__logo {
-    
+
     width: 80px;
     height: 80px;
-    
+
 }
 
 .header__title {
@@ -58,7 +58,7 @@
 }
 
 .header__link {
-	
+
     position: relative;
     cursor: pointer;
     text-decoration: none; /* Убираем подчеркивание */
@@ -129,7 +129,7 @@
     font-weight: 600;
 }
 
-#managemen p {
+.item {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
@@ -184,8 +184,8 @@
 }
 
 #gallery_SVO img {
-    width: 230px;
-    height: 280px;
+    width: 250px;
+    height: 300px;
     padding: 10px;
 }
 
@@ -287,7 +287,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 .contacts_logo a {
@@ -302,7 +302,7 @@
 
 .vk_logo {
     height: 35px;
-    
+
 }
 
 
@@ -359,6 +359,10 @@
             -webkit-box-orient: vertical;
 }
 
+.news-card-text img {
+    max-width: 400px;
+}
+
 @media only screen and (max-width: 600px) {
     .news-card {
         border-radius: 0;
@@ -391,7 +395,7 @@
     padding: 0px;
     font-weight: 600;
     font-size: 23px;
-    
+
     color: white;
 }
 
@@ -451,8 +455,8 @@
 .science .wrapper {
     display: flex;
     flex-wrap: wrap;
-    
-    
+
+
     flex-direction: row;
     padding: 20px;
 }
@@ -462,7 +466,7 @@
 }
 
 .image img{
-    
+
     max-width: 100%;
     height: auto;
     margin-right: 20px;
@@ -473,9 +477,9 @@
 .text {
     flex: 1;
     max-width: 100%;
-    
+
     padding: 5px;
-    
+
 }
 
 .text p {

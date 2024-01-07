@@ -12,7 +12,7 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 
-class NewsEditScreen extends Screen
+class GetNewsEditScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -35,7 +35,7 @@ class NewsEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Изменить новость';
+        return 'Отредактировать, принять или удалить новость';
     }
 
     /**
@@ -46,9 +46,11 @@ class NewsEditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Button::make('Удалить')
+            Button::make('Отклонить')
                 ->icon('trash')
                 ->method('remove'),
+            Button::make('Одобрить')
+                ->method('accept'),
         ];
     }
 
@@ -71,6 +73,8 @@ class NewsEditScreen extends Screen
 
     public function update(News $news, Request $request)
     {
+
+
         $title = $request->input('title');
 
         $description = $request->input('description');
@@ -97,6 +101,13 @@ class NewsEditScreen extends Screen
     {
         $news->delete();
         Alert::info('Вы успешно удалили информацию');
+        return redirect()->route('platform.news');
+    }
+
+    public function accept(News $news)
+    {
+        $news->update(['status' => 'approved']);
+        Alert::info('Вы успешно одобрили новость!');
         return redirect()->route('platform.news');
     }
 }

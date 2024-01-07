@@ -62,7 +62,7 @@ class GetNewsScreen extends Screen
                 TD::make('description', 'Описание новости')->width(300),
                 TD::make('id', 'Изменить')
                     ->render(function (News $news) {
-                        return Link::make('Рассмотреть')->route('platform.news.edit', $news);
+                        return Link::make('Рассмотреть')->route('platform.get_news.edit', $news);
                     }),
 
             ]),

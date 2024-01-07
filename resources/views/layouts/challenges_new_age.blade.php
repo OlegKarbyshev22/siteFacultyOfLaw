@@ -9,13 +9,9 @@
                 <div class="cards">
                     <h4 class="card-title">{{$section->section->title}}</h4>
                     <img src="{{ asset('storage/images/challenges/' . $section->path_image )}}" style="max-height: 150px" alt="">
-
                     {!! htmlspecialchars_decode($section->description) !!}
-
                 </div>
             @endforeach
-
-
         </div>
     </section>
 @endsection

@@ -4,11 +4,13 @@
         <div class="container">
             <h2>Юридическое образование Ульяновской области в контексте времени</h2>
             <div class="law_wrapper">
-                <div class="law_in_context_time">
-                    <img src="/images/Вручение почет грамоты первой выпускнице ВЮЗИ Овсянниковой_jHfa0bz.jpg" alt="">
-                    <p>1974-1999 годы: УКП ВЮЗИ</p>
-                </div>
-                <div class="law_in_context_time">
+                @foreach($lawEducation as $law)
+                    <div class="law_in_context_time">
+                        <img src="{{ asset('storage/images/lawInTime/' . $law->path_image )}}" alt="">
+                        <p>{{$law->title}}</p>
+                    </div>
+                @endforeach
+                <!--<div class="law_in_context_time">
                     <img src="/images/Вручение студ билета и зач кн первым студентам - 1974 г. Михаилу Юртанову.jpg" alt="">
                     <p>1999-1999 годы: филиал МГЮА</p>
                 </div>
@@ -19,7 +21,7 @@
                 <div class="law_in_context_time">
                     <img src="/images/Вручение почет грамоты первой выпускнице ВЮЗИ Овсянниковой_jHfa0bz.jpg" alt="">
                     <p>2009-2023 годы: Юридический факультет УлГУ</p>
-                </div>
+                </div> -->
             </div>
             <h2>ЛИЦА ПОБЕДЫ</h2>
             <div class="faces_of_victory">

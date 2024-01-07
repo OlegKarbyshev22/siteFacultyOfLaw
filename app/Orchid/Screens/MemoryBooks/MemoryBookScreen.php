@@ -77,9 +77,9 @@ class MemoryBookScreen extends Screen
 
             Layout::modal('MemorialBookCreateModal', [
                 Layout::rows([
-                    Input::make('first_name')->title('Имя'),
-                    Input::make('last_name')->title('Фамилия'),
-                    Input::make('patronymic')->title('Отчество'),
+                    Input::make('first_name')->title('Имя')->required(),
+                    Input::make('last_name')->title('Фамилия')->required(),
+                    Input::make('patronymic')->title('Отчество')->required(),
                     TextArea::make('description')->title('Краткое описание'),
                     Input::make('image')->type('file')->title("Прикрепить изображение")->required(),
                 ]),

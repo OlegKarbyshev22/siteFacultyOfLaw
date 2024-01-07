@@ -6,6 +6,7 @@ use App\Http\Controllers\NamesOfGloryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SoldierController;
 use App\Models\FacesVictory;
+use App\Models\LawInTime;
 use App\Models\Leadership;
 use App\Models\News;
 use App\Models\OutstandingPeople;
@@ -28,7 +29,8 @@ Route::get('/', [NewsController::class, "show"]);
 Route::get('/legalEducation', function () {
     return view('layouts.legal_education', [
 		"heroes" => OutstandingPeople::where('category', 'FacesVictory')->latest()->paginate(10),
-		"personel" => OutstandingPeople::where('category', 'leaderships')->latest()->paginate(10)
+		"personel" => OutstandingPeople::where('category', 'leaderships')->latest()->paginate(10),
+        "lawEducation" => LawInTime::all(),
 	]);
 });
 
@@ -40,3 +42,7 @@ Route::get('/challenges_new_age', [ChallengesNewAge::class, "show"]);
 Route::get('/send_news', [NewsController::class, 'send'])->name('news.create');
 Route::post('/send_news/store', [NewsController::class, 'store'])->name('news.store');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

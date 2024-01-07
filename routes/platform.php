@@ -27,6 +27,7 @@ use App\Orchid\Screens\MemoryBooks\MemoryBookEditScreen;
 use App\Orchid\Screens\MemoryBooks\MemoryBookScreen;
 use App\Orchid\Screens\News\CreateNewsScreen;
 use App\Orchid\Screens\News\GetNewsScreen;
+use App\Orchid\Screens\News\GetNewsEditScreen;
 use App\Orchid\Screens\News\NewsEditScreen;
 use App\Orchid\Screens\News\NewsScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -121,6 +122,11 @@ Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.exam
 
 Route::screen('/news', NewsScreen::class)->name('platform.news');
 Route::screen('/news/create', CreateNewsScreen::class)->name('platform.create.news');
+Route::screen('/news/{news}', NewsEditScreen::class)
+    ->name('platform.news.edit');
+Route::screen('/getNews', GetNewsScreen::class )->name('platform.get_news');
+Route::screen('/getNews/{news}', GetNewsEditScreen::class)
+    ->name('platform.get_news.edit');
 
 Route::screen('/heroes_SVO', HeroesScreen::class )->name('platform.heroes');
 Route::screen('/heroes_SVO/{outstandingPeople}', HeroesEditScreen::class)
@@ -139,9 +145,7 @@ Route::screen('/leaderships/{outstandingPeople}', LeadershipsEditScreen::class)
     ->name('platform.leaderships.edit');
 
 
-Route::screen('/getNews', GetNewsScreen::class )->name('platform.get_news');
-Route::screen('/getNews/{news}', NewsEditScreen::class)
-    ->name('platform.news.edit');
+
 //Route::screen('/getNews/accept/{news}', GetNewsScreen::class)->name('platform.news_accept');
 
 Route::screen('/memory_book', MemoryBookScreen::class )->name('platform.memory_book');

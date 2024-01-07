@@ -72,7 +72,7 @@ class LawInTimeScreen extends Screen
 
             Layout::modal('LawCreateModal', [
                 Layout::rows([
-                    Input::make('title')->title('Заголовок'),
+                    Input::make('title')->title('Заголовок')->required(),
                     Input::make('image')->type('file')->title("Прикрепить")->required(),
                 ]),
             ])->title('Добавить')->applyButton('Добавить')->closeButton('Закрыть'),

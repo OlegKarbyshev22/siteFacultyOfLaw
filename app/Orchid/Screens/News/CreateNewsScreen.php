@@ -6,6 +6,7 @@ use App\Models\News;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
@@ -58,9 +59,9 @@ class CreateNewsScreen extends Screen
             Layout::rows([
                 Input::make('news.title')->title("Название новости")->required(),
                 Input::make('images')->type('file')->title("Прикрепить главное изображение")->required(),
-                //Quill::make('html')->toolbar(["text", "color", "header", "list", "format", "media"])->title("Описание")->required(),
+                Quill::make('html')->toolbar(["text", "color", "header", "list", "format", "media"])->title("Описание")->required(),
                 //Picture::make('html'),
-                SimpleMDE::make('html'),
+                //SimpleMDE::make('html'),
                 Button::make('Добавить')->method('create')
             ]),
         ];

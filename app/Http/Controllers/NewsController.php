@@ -48,7 +48,7 @@ class NewsController extends Controller
 	public function show() : View
 	{
 		return view("layouts.news", [
-			"news_list" => News::all()
+			"news_list" => News::latest()->paginate(10)
 		]);
 	}
 }
