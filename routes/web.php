@@ -5,26 +5,11 @@ use App\Http\Controllers\MemorialBookController;
 use App\Http\Controllers\NamesOfGloryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SoldierController;
-use App\Models\FacesVictory;
 use App\Models\LawInTime;
-use App\Models\Leadership;
-use App\Models\News;
 use App\Models\OutstandingPeople;
-use App\Models\Soldier;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', [NewsController::class, "show"]);
+Route::get('/', [NewsController::class, "show"])->name('news.main');
 
 Route::get('/legalEducation', function () {
     return view('layouts.legal_education', [
@@ -38,11 +23,7 @@ Route::get('/gallery_glorious_names', [NamesOfGloryController::class, "show"]);
 Route::get('/participants_SVO', [SoldierController::class, "show"]);
 Route::get('/memorial_book', [MemorialBookController::class, "show"]);
 Route::get('/challenges_new_age', [ChallengesNewAge::class, "show"]);
-
 Route::get('/send_news', [NewsController::class, 'send'])->name('news.create');
 Route::post('/send_news/store', [NewsController::class, 'store'])->name('news.store');
+Route::get('/news_detail/{id}', [NewsController::class, 'detail'])->name('news.detail');
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

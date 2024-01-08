@@ -51,4 +51,10 @@ class NewsController extends Controller
 			"news_list" => News::latest()->paginate(10)
 		]);
 	}
+
+    public function detail($id) : View
+    {
+        $news = News::find($id);
+        return view('layouts.detail_news', compact('news'));
+    }
 }
