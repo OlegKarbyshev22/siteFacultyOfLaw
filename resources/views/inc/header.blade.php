@@ -1,8 +1,10 @@
 <header class="header">
         <div class="container">
             <div class="wrapper">
-                <img class="header__logo" src="/images/icon_4606.png" alt="">
-                <h1 class="header__title">Юридический факультет УлГУ</h1>
+                <a class="main_link" href="{{route('news.main')}}">
+                    <img class="header__logo" src="/images/icon_4606.png" alt="">
+                    <h1 class="header__title">Юридический факультет УлГУ</h1>
+                </a>
 
                 <div class="header__nav">
                     <nav>
