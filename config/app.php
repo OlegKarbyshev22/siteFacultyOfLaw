@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URI', 'https://kniga.ulsu.ru'),
 
     'asset_url' => env('ASSET_URL'),
 
