@@ -54,7 +54,7 @@ class NewsScreen extends Screen
         return [
             Layout::table('news', [
                 TD::make('path_image', 'Фото')->render(function (News $news) {
-                    $imagePath = asset('storage/images/news/' . $news->path_image);
+                    $imagePath = secure_asset('storage/images/news/' . $news->path_image);
                     return "<img src='{$imagePath}' alt='sample' class='w-50'>";
                 }),
 

@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\News;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
@@ -70,13 +71,16 @@ class CreateNewsScreen extends Screen
 
     public function create(News $news, Request $request)
     {
+
         $news->title = $request->input('news.title');
         $file = $request->file('images');
         $filename = $file->getClientOriginalName();
         $file->storeAs('public/images/news/', $filename);
+
         $news->path_image = $filename;
         $news->description = $request->input('html');
         $news->status = "approved";
+
         $news->save();
         Alert::info('You have successfully created a post.');
         return redirect()->route('platform.news');

@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Leaderships;
 
 use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
@@ -61,7 +62,7 @@ class LeadershipsScreen extends Screen
         return [
             Layout::table('outstandingPeople', [
                 TD::make('path_image', 'Фото')->width('150')->render(function (OutstandingPeople $outstandingPeople) {
-                    $imagePath = asset('storage/images/leaderships/' . $outstandingPeople->path_image);
+                    $imagePath = secure_asset('storage/images/leaderships/' . $outstandingPeople->path_image);
                     return "<img src='{$imagePath}' alt='{$imagePath}' class='mw-100 d-block img-fluid rounded-1 w-100'>" ;
                 }),
                 TD::make('first_name', 'Имя'),
@@ -90,16 +91,25 @@ class LeadershipsScreen extends Screen
 
     public function create(OutstandingPeople $outstandingPeople, Request $request)
     {
+
         $outstandingPeople->first_name = $request->input('first_name');
         $outstandingPeople->last_name = $request->input('last_name');
         $outstandingPeople->patronymic = $request->input('patronymic');
         $outstandingPeople->description = $request->input('description');
         $file = $request->file('image');
         $filename = $file->getClientOriginalName();
+
         $file->storeAs('public/images/leaderships/', $filename);
+        //$result = $file->storeAs('public/images/leaderships/', $filename);
+
+//        Storage::disk('disk')->putFileAs(
+//            'images/leaderships/', $request->file('image')
+//        );
+
         $outstandingPeople->path_image = $filename;
         $outstandingPeople->category = "leaderships";
         $outstandingPeople->save();
+
         return redirect()->route('platform.leaderships');
     }
 }

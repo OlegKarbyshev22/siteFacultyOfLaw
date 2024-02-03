@@ -60,7 +60,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.law'),
             Menu::make('Вызовы нового времени')
                 ->icon('clipboard-fill')
-                ->route('platform.challenges')
+                ->route('platform.challenges'),
+            Menu::make('Юридическое образование(контент)')
+                ->icon('clipboard-fill')
+                ->route('platform.legalEducationContent')
         ];
     }
 
