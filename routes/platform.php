@@ -21,13 +21,15 @@ use App\Orchid\Screens\Heroes\HeroesEditScreen;
 use App\Orchid\Screens\Heroes\HeroesScreen;
 use App\Orchid\Screens\LawInTime\LawInTimeEditScreen;
 use App\Orchid\Screens\LawInTime\LawInTimeScreen;
+use App\Orchid\Screens\LawInTime\legalEducationContent;
+use App\Orchid\Screens\LawInTime\legalEducationContents;
 use App\Orchid\Screens\Leaderships\LeadershipsEditScreen;
 use App\Orchid\Screens\Leaderships\LeadershipsScreen;
 use App\Orchid\Screens\MemoryBooks\MemoryBookEditScreen;
 use App\Orchid\Screens\MemoryBooks\MemoryBookScreen;
 use App\Orchid\Screens\News\CreateNewsScreen;
-use App\Orchid\Screens\News\GetNewsScreen;
 use App\Orchid\Screens\News\GetNewsEditScreen;
+use App\Orchid\Screens\News\GetNewsScreen;
 use App\Orchid\Screens\News\NewsEditScreen;
 use App\Orchid\Screens\News\NewsScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -158,3 +160,5 @@ Route::screen('/law_in_time/{lawInTime}', LawInTimeEditScreen::class)
 
 Route::screen('/challengesNewAge', ChallengesNewAgeScreen::class )->name('platform.challenges');
 Route::screen('/challengesNewAge/section/{section}', SectionEditScreen::class )->name('platform.section_edit');
+
+Route::screen('/legalEducationContent', legalEducationContents::class )->name('platform.legalEducationContent');
