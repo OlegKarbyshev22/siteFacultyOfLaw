@@ -5,8 +5,10 @@
     min-height: 150px;
     font-family: 'Roboto', sans-serif;
     /*border-bottom: 2px #030394 solid;*/
-
+    text-align: center;
 }
+
+
 
 .container {
     max-width: 1170px;
@@ -30,8 +32,6 @@
 
 .header__logo {
 
-    width: 80px;
-    height: 80px;
 }
 
 .header__title {
@@ -46,6 +46,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 3px;
+    padding: 0px;
 }
 
 .header__nav li {
@@ -181,27 +182,27 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-#gallery_SVO .wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+/*#gallery_SVO .wrapper {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: start;*/
+/*    justify-content: center;*/
+/*    flex-wrap: wrap;*/
+/*}*/
 
-#gallery_SVO img {
-    width: 250px;
-    height: 300px;
-    padding: 10px;
-}
+/*#gallery_SVO img {*/
+/*    width: 250px;*/
+/*    height: 300px;*/
+/*    padding: 10px;*/
+/*}*/
 
-#gallery_SVO p {
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    padding-left: 10px;
-}
+/*#gallery_SVO p {*/
+/*    padding: 0px;*/
+/*    margin: 0px;*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*    font-weight: 600;*/
+/*    padding-left: 10px;*/
+/*}*/
 
 #memorialBook a {
     color: #030394;
@@ -349,6 +350,7 @@
     color: #333;
 }
 
+
 .news-card-date {
     font-size: 14px;
     color: #777;
@@ -377,6 +379,11 @@
 
 #challengesNewAge {
     background-color: #e3f2fd;
+
+}
+
+@media (max-width:500px) {
+
 }
 
 #challengesNewAge .title
@@ -582,6 +589,17 @@
     background-color: #0466c8;
     font-family: 'Montserrat', sans-serif;
     color: white;
+
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+
+.legalEd {
+    background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+
     padding: 15px;
     margin-top: 30px;
     border-radius: 20px;
@@ -594,7 +612,172 @@
     padding: 0px;
 }
 
+.cards_text {
+    word-wrap: break-word;
+
+}
+
+.cards p {
+    color: white !important;
+
+}
+
+.legalEd p img {
+    max-width: 800px;
+}
+
+@media (max-width:768px) {
+    .legalEd p img {
+        width: 95%;
+        height: 50%;
+    }
+}
+
+.legalEd p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.image-container .globalImage {
+    height: 290px;
+    width: 240px;
+    border: 1px solid whitesmoke;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.image-container .globalImage img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transition: .2s linear;
+}
 
 
+.image-container .globalImage:hover img {
+    transform: scale(1.1);
+}
 
+.popup-image {
+    position: fixed;
+    top: 0; left: 0;
+    background: rgba(0, 0, 0, .9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+    overflow-y: auto;
+}
 
+.popup-image span {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 60px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+}
+
+.popup-image img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 5px;
+    width: 550px;
+    height: 560px;
+    object-fit: cover;
+
+}
+
+@media (max-width:768px) {
+    .popup-image img {
+        width: 95%;
+        height: 50%;
+    }
+}
+
+.image-container .FIO {
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.popup-content {
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Заменено на min-height */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.popup-fio {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.popup-description {
+    font-size: 18px;
+
+    text-align: center;
+    max-height: 200px; /* Замените на желаемую высоту */
+    overflow-y: auto;
+}
+
+.alphabet {
+    text-align: center;
+    padding: 10px;
+}
+
+.alphabet a {
+    margin: 0 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: blue;
+}
+
+.not_find_alert {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 150px;
+}
+
+.send_news_button {
+    color: white;
+    background-color: blue;
+    border: 0px;
+    width: 200px !important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.send_news_button:hover {
+    color: white;
+    background-color: #0466c8;
+    transition: 0.2ms linear;
+}
+
+.news-card-content p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news-card-content img {
+    width: 400px !important;
+}
