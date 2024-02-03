@@ -2,7 +2,7 @@
         <div class="container">
             <div class="wrapper">
                 <a class="main_link" href="{{route('news.main')}}">
-                    <img class="header__logo" src="/images/icon_4606.png" alt="">
+                    <img class="header__logo" src="/images/logo.png" alt="">
                     <h1 class="header__title">Юридический факультет УлГУ</h1>
                 </a>
 
@@ -14,6 +14,8 @@
                             <li><a class="header__link" href="/memorial_book">Книга памяти</a></li>
                             <li><a class="header__link" href="/gallery_glorious_names">Галерея славных имён</a></li>
                             <li><a class="header__link" href="/participants_SVO">Участники СВО</a></li>
+                            <li><a class="header__link" href="/facesVictory">Лица победы</a></li>
+                            <li><a class="header__link" href="/leaderships">Руководители</a></li>
                             <li><a class="header__link" href="/send_news">Предложить новость +</a></li>
                         </ul>
                     </nav>
