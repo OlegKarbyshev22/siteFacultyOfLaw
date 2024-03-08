@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("first_name");
             $table->string("last_name");
             $table->string("patronymic");
-            $table->text("description")->nullable();
+            $table->longText("description")->nullable();
             $table->string('path_image');
             $table->enum('category', ['facesVictory', 'gloriousName', 'leaderships', 'soldiers', 'memorialBooks']);
             $table->timestamps();
