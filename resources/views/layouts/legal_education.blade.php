@@ -11,10 +11,21 @@
                     </div>
                 @endforeach
             </div>
-            <div class="legalEd">
+            {{--<div class="legalEd">
                 @foreach($legalEducationContent as $content)
                     <p>{!! htmlspecialchars_decode($content->description) !!}</p>
                 @endforeach
+            </div>--}}
+            @foreach($posts_list as $post)
+            <div class="news-card">
+                <div class="news-card-content">
+                    <div class="news-card-title" style="text-align: center">{{ $post->title }}</div>
+                    <div style="text-align: justify;">{!! htmlspecialchars_decode($post->description) !!}</div>
+                </div>
+            </div>
+            @endforeach
+            <div style="text-align: center; padding: 10px; color: blue; text-decoration: none; font-size: 20px">
+                {{ $posts_list->links('vendor.pagination.semantic-ui') }}
             </div>
         </div>
     </section>

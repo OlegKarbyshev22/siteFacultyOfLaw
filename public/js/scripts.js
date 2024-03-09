@@ -26,12 +26,15 @@ document.querySelectorAll('.image-container .globalImage').forEach(imageContaine
 
         popup.style.display = 'block';
         popupFIO.textContent = fio;
-        popupDescription.textContent = description;
+        popupDescription.innerHTML  = description;
 
         popup.querySelector('img').src = imageContainer.querySelector('img').getAttribute('src');
+        document.querySelector('html').style.overflowY = 'hidden';
     }
 });
 
 document.querySelector('.popup-image span').onclick = () => {
     document.querySelector('.popup-image').style.display = 'none';
+    document.querySelector('.popup-image').style.display = 'none';
+    document.querySelector('html').style.overflowY = 'auto';
 }

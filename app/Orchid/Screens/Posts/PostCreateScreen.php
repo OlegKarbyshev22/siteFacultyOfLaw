@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Orchid\Screens\News;
+namespace App\Orchid\Screens\Posts;
 
-use App\Models\News;
+
+
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Orchid\Screen\Actions\Button;
@@ -13,7 +15,7 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 
-class CreateNewsScreen extends Screen
+class PostCreateScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -32,7 +34,7 @@ class CreateNewsScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Создание новости';
+        return 'Создание статьи';
     }
 
     /**
@@ -43,8 +45,6 @@ class CreateNewsScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-
-
 
         ];
     }
@@ -58,31 +58,20 @@ class CreateNewsScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('news.title')->title("Название новости")->required(),
-                Input::make('images')->type('file')->title("Прикрепить главное изображение")->required(),
-                Quill::make('html')->title("Описание")->toolbar(["text", "color", "header", "list", "format", "media"])->required(),
-                //Picture::make('html'),
-                //SimpleMDE::make('html'),
+                Input::make('title')->title("Название новости")->required(),
+                Quill::make('html')->title("Описание")->required(),
                 Button::make('Добавить')->method('create')
             ]),
         ];
     }
 
 
-    public function create(News $news, Request $request)
+    public function create(Post $post, Request $request)
     {
-
-        $news->title = $request->input('news.title');
-        $file = $request->file('images');
-        $filename = $file->getClientOriginalName();
-        $file->storeAs('public/images/news/', $filename);
-
-        $news->path_image = $filename;
-        $news->description = $request->input('html');
-        $news->status = "approved";
-
-        $news->save();
+        $post->title = $request->input('title');
+        $post->description = $request->input('html');
+        $post->save();
         Alert::info('You have successfully created a post.');
-        return redirect()->route('platform.news');
+        return redirect()->route('platform.legalEducationContent');
     }
 }

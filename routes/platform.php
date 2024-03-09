@@ -33,6 +33,9 @@ use App\Orchid\Screens\News\GetNewsScreen;
 use App\Orchid\Screens\News\NewsEditScreen;
 use App\Orchid\Screens\News\NewsScreen;
 use App\Orchid\Screens\PlatformScreen;
+use App\Orchid\Screens\Posts\PostCreateScreen;
+use App\Orchid\Screens\Posts\PostEditScreen;
+use App\Orchid\Screens\Posts\PostsScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
@@ -146,10 +149,6 @@ Route::screen('/leaderships', LeadershipsScreen::class )->name('platform.leaders
 Route::screen('/leaderships/{outstandingPeople}', LeadershipsEditScreen::class)
     ->name('platform.leaderships.edit');
 
-
-
-//Route::screen('/getNews/accept/{news}', GetNewsScreen::class)->name('platform.news_accept');
-
 Route::screen('/memory_book', MemoryBookScreen::class )->name('platform.memory_book');
 Route::screen('/memory_book/{outstandingPeople}', MemoryBookEditScreen::class)
     ->name('platform.memory_book.edit');
@@ -159,6 +158,8 @@ Route::screen('/law_in_time/{lawInTime}', LawInTimeEditScreen::class)
     ->name('platform.law.edit');
 
 Route::screen('/challengesNewAge', ChallengesNewAgeScreen::class )->name('platform.challenges');
-Route::screen('/challengesNewAge/section/{section}', SectionEditScreen::class )->name('platform.section_edit');
+Route::screen('/challengesNewAge/section/{contents}', SectionEditScreen::class )->name('platform.section_edit');
 
-Route::screen('/legalEducationContent', legalEducationContents::class )->name('platform.legalEducationContent');
+Route::screen('/legalEducationPosts', PostsScreen::class )->name('platform.legalEducationContent');
+Route::screen('/legalEducationPosts/create', PostCreateScreen::class)->name('platform.create.posts');
+Route::screen('/legalEducationPosts/{posts}', PostEditScreen::class)->name('platform.post.edit');

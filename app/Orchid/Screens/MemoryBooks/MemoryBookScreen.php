@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
@@ -80,7 +81,7 @@ class MemoryBookScreen extends Screen
                     Input::make('first_name')->title('Имя')->required(),
                     Input::make('last_name')->title('Фамилия')->required(),
                     Input::make('patronymic')->title('Отчество')->required(),
-                    TextArea::make('description')->title('Краткое описание'),
+                    Quill::make('description')->title("Описание")->toolbar(["text", "color", "header", "list", "format", "media"]),
                     Input::make('image')->type('file')->title("Прикрепить изображение")->required(),
                 ]),
             ])->title('Добавить')->applyButton('Добавить')->closeButton('Закрыть'),

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens\News;
+namespace App\Orchid\Screens\Posts;
 
-use App\Models\News;
+
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
@@ -12,19 +13,19 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
 
-class NewsEditScreen extends Screen
+class PostEditScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public $news;
+    public $posts;
 
-    public function query(News $news): iterable
+    public function query(Post $posts): iterable
     {
         return [
-            'news' => $news,
+            'posts' => $posts,
         ];
     }
 
@@ -61,42 +62,34 @@ class NewsEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('title')->title("Название новости")->value($this->news->title),
-                Input::make('path_image')->type('file')->title("Прикрепить главное изображение"),
-                Quill::make('description')->value($this->news->description),
+                Input::make('title')->title("Название новости")->value($this->posts->title),
+                Quill::make('description')->value($this->posts->description),
                 Button::make('Обновить')->method('update')
             ]),
         ];
     }
 
-    public function update(News $news, Request $request)
+    public function update(Post $posts, Request $request)
     {
         $title = $request->input('title');
 
         $description = $request->input('description');
         if ($title != null)
         {
-            $news->update(['title' => $request->input('title')]);
+            $posts->update(['title' => $request->input('title')]);
         }
         if ($description != null)
         {
-            $news->update(['description' => $request->input('description')]);
-        }
-
-        if($request->hasFile('path_image')){
-            $file = $request->file('path_image');
-            $filename = $file->getClientOriginalName();
-            $file->storeAs('public/images/news/', $filename);
-            $news->update(['path_image' => $filename]);
+            $posts->update(['description' => $request->input('description')]);
         }
         Alert::info('Вы успешно обновили информацию');
-
+        return redirect()->route('platform.legalEducationContent');
     }
 
-    public function remove(News $news)
+    public function remove(Post $posts)
     {
-        $news->delete();
+        $posts->delete();
         Alert::info('Вы успешно удалили информацию');
-        return redirect()->route('platform.news');
+        return redirect()->route('platform.legalEducationContent');
     }
 }

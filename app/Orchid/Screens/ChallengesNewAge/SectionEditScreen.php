@@ -7,6 +7,7 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
@@ -19,10 +20,12 @@ class SectionEditScreen extends Screen
      *
      * @return array
      */
-    public function query(): iterable
+    public $contents;
+    public function query(Content $contents): iterable
     {
         return [
-            'section' => Section::all()
+            'section' => Section::all(),
+            'contents' => $contents,
         ];
     }
 
@@ -59,19 +62,24 @@ class SectionEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('title')->title('Напишите новое название секции'),
+                Input::make('title')->title('Напишите новое название секции')->value($this->contents->section->title),
+                Quill::make('description')->value($this->contents->description),
                 Button::make('Обновить')->method('update'),
             ]),
         ];
     }
 
-    public function update(Section $section, Request $request)
+    public function update(Section $section, Content $contents, Request $request)
     {
         $title = $request->input('title');
-
+        $description = $request->input('description');
         if ($title != null)
         {
-            $section->update(['title' => $request->input('title')]);
+            $this->contents->section->update(['title' => $request->input('title')]);
+        }
+        if ($description != null)
+        {
+            $contents->update(['description' => $request->input('description')]);
         }
 
         Alert::info('Вы успешно обновили информацию');

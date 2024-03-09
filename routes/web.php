@@ -11,6 +11,7 @@ use App\Http\Controllers\SoldierController;
 use App\Models\LawInTime;
 use App\Models\legalEducationContent;
 use App\Models\OutstandingPeople;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Orchid\Platform\Http\Controllers\LoginController;
 
@@ -19,7 +20,7 @@ Route::get('/', [NewsController::class, "show"])->name('news.main');
 Route::get('/legalEducation', function () {
     return view('layouts.legal_education', [
         "lawEducation" => LawInTime::all(),
-        "legalEducationContent" => legalEducationContent::all()
+        "posts_list" => Post::latest()->paginate(10)
 	]);
 });
 

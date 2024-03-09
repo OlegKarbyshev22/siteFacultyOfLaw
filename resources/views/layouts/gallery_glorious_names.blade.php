@@ -24,10 +24,16 @@
                 <p class="not_find_alert">Не найдено!</p>
             @endif
             <div class="popup-image">
-                <span>&times;</span>
+                <span class="sp">&times;</span>
+                <div class="alphabet">
+                    <a href="{{ url("memorial_book") }}">ВСЕ</a>
+                    @foreach($alphabet as $letter)
+                        <a href="{{ route('sort.memorial_book', ['letter' => $letter]) }}">{{ $letter }}</a>
+                    @endforeach
+                </div>
                 <div class="popup-content">
                     <p class="popup-fio"></p>
-                    <img src="" alt="">
+                    <img class="picture" src="" alt="">
                     <p class="popup-description"></p>
                 </div>
 

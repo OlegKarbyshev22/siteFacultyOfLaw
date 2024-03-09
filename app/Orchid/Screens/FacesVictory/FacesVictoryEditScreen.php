@@ -7,6 +7,7 @@ use App\Models\OutstandingPeople;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
@@ -60,10 +61,10 @@ class FacesVictoryEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('first_name')->title('Имя'),
-                Input::make('last_name')->title('Фамилия'),
-                Input::make('patronymic')->title('Отчество'),
-                TextArea::make('description')->title('Краткое описание'),
+                Input::make('first_name')->title('Имя')->value($this->outstandingPeople->first_name),
+                Input::make('last_name')->title('Фамилия')->value($this->outstandingPeople->last_name),
+                Input::make('patronymic')->title('Отчество')->value($this->outstandingPeople->patronymic),
+                Quill::make('description')->title("Описание")->toolbar(["text", "color", "header", "list", "format", "media"])->value($this->outstandingPeople->description),
                 Input::make('path_image')->type('file')->title("Прикрепить изображение"),
                 Button::make('Обновить')->method('update'),
             ]),
